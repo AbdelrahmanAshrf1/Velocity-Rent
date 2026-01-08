@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="gbSuggestionList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="suggestionList.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="suggestionList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="suggestionList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="suggestionList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="suggestionList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 8, 6, 8</value>
+  </data>
+  <data name="suggestionList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 74</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="suggestionList.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="suggestionList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;suggestionList.Name" xml:space="preserve">
+    <value>suggestionList</value>
+  </data>
+  <data name="&gt;&gt;suggestionList.Type" xml:space="preserve">
+    <value>Velocity_Rent.Map.Controls.ucSuggestionsList, Velocity_Rent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;suggestionList.Parent" xml:space="preserve">
+    <value>gbSuggestionList</value>
+  </data>
+  <data name="&gt;&gt;suggestionList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbSuggestionList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="gbSuggestionList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 125</value>
+  </data>
+  <data name="gbSuggestionList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="gbSuggestionList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 568</value>
+  </data>
+  <data name="gbSuggestionList.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;gbSuggestionList.Name" xml:space="preserve">
+    <value>gbSuggestionList</value>
+  </data>
+  <data name="&gt;&gt;gbSuggestionList.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2GroupBox, Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;gbSuggestionList.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;gbSuggestionList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="guna2Separator1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="guna2Separator1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 51</value>
+  </data>
+  <data name="guna2Separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>920, 10</value>
+  </data>
+  <data name="guna2Separator1.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;guna2Separator1.Name" xml:space="preserve">
+    <value>guna2Separator1</value>
+  </data>
+  <data name="&gt;&gt;guna2Separator1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Separator, Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;guna2Separator1.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;guna2Separator1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtSearchBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtSearchBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtSearchBox.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGDSURBVEhL7ZMx
+        S0JRFMe1ggantlr6AFZL0RRIW9AuROQmNQnv6Xvo6OJSUoOLW1FC9Aka2wpqrFGKhgJd/Ar9DvxziK7v
+        po3+4M99//POPed4fTc1ZWLCMFyrVCphuVw+i6LohOfDarW6rNfjo8J36I3iLYoHrBH+guc+ayeO40Wl
+        /w0K7VKgh4r5fH5W4SE0yPCuQd47a1ZhPzS5Fd9UyAk5BdSt1WoLCiXDBjuWomwi/Jo2+U3Z0Wj619+O
+        xUUQBEvsGZRKpXmF3HCmRkvWGxrco5ysG5JOUSjrDcd0xWAHsm4ofkxyLOsN+27YtyfrhimOSD6X9YY9
+        z2hD1o3dUCbpo4xCiZC7SvGPer0+o9BoSO6ghmwSaRrc2pchn4xdf/LthhYUcpEmp4kemX5OMT/YlEVd
+        pmvbd67wEO7Lik2OnsjrsW7rlT92/TXhAD2gS3SNXtAnCm1yK87zeE0Mu6EUyKECRfY5wvWff+jETXz4
+        bsIAWwr9P1acJjuyU3xIpb4A+pXDBftC8aQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="txtSearchBox.IconRight" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKeSURBVFhH7VY9
+        axRRFB0VRREVQbAwRfzK5s3bBEFRC/EHGKzs1UpIZSFahpSiNiIWIcT3ZogiW5rY+F2IRewMaOsXCBGj
+        rjOzGz8ynvP2bnaCkmzCzoKYAwdm7r3vnXvf3Lkz3gr+C6Sljg2xVf2x9V8m1n8k5vxRvtW1LbZ6AJyC
+        eEoigVfizg+VsLAzsv5VCEZ14QZVv4S1HpHR+5JAhxD6IYKz4H1UfaV2r6f4OCS8daiE+ggqGxNRcoaJ
+        fLO+pj8O/LuSwIBb0AqkQ/vXRladxMaTdWFUWubRJ6O9HRLmlU1PN3y/wJg9Iebl4+NIYVMSqLPY8G1d
+        GPwQG3/wy82erRI2B/iMxFwT0/IQDRe3UwQbTcuGoH4BnklN53oJm4ck6NqBuBnE/Kza4m4xLw1Vo/ZK
+        R1cawv7T2OjjaeqtkrC/An1wifFozttiah6ZxmInUxTPUY0lRh2WkAXxaXTPZqz5zLVJ6B8S88JIB73V
+        rAxH9kxEySo7ujxSKEhYU4iMOu/ElzL5cFRPMsIkqtfjfI+5IfyncQp9rKhiujvTsHejLJ2HtKTXYe07
+        t4dRx8S8OJLAf5gRb5L6niyfQxToU+KfXKxP/gCrYnWsktWyalbvpplRVobKBPgGdP2RPQkKUph2JiLm
+        fIBkXlOICYvJ45HThpN5z0ch5nyAE3pOMTTpQTF5iVWPXfXWPyem/NCY8arP3YfFA7V7/+v00K4tLihP
+        uJ5gtegTdx/4Jd5jVlx0AXkDjXnZJWDVBf4D4Jqf4e/Zj1GuoLCrmIkYfZ3X4A1x54/aYHKid0D+/czW
+        /wHaAjafJCDfCz0urvaAr58k4Fix6qi42gMOoEwCE2JuHziC6wkkVp8Qc3uBN+ABp19a8taIaQX/Ejzv
+        NxOOHC+R0jm0AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="txtSearchBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 69</value>
+  </data>
+  <data name="txtSearchBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtSearchBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>923, 34</value>
+  </data>
+  <data name="txtSearchBox.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;txtSearchBox.Name" xml:space="preserve">
+    <value>txtSearchBox</value>
+  </data>
+  <data name="&gt;&gt;txtSearchBox.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;txtSearchBox.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;txtSearchBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANVSURBVFhHvVdL
+        aBNRFB0Uf/hFUBEraK1N3ntpLFYRvyAude1Ku9S1+EfEogsFQUHcVJvMvGkFKeKmirpx1a0fEFoFoSqo
+        C1Fr5pNQm473Te4kr8lMZiZJPXBg5p5777uZd98nShyY91PrLE5PWhp7Ymr0g6VRU7D0TEbAfsLQ02vR
+        vXX4rXavslVyAwawYUAnhJbN6fVf/e0rMbw5FHiy0+bsvc9AYfxoZBnFNI3BVFk3/OrJqsSGrdFBUyO9
+        eY0cEDRVchyK1MGem+3LJk2eSmO6eHDnW6OfZyekqrCjSw3E/AufqpgJI9uxBl2iw1KJJieyNXYKpVBA
+        U56WY6FxMyhFg6FRBp9v2ktgauw2Si6cYbYQPvdRmIZbguJZ2FB2AavibqUINh2rHyDhzUow/ero6aUo
+        KTm1K+nXlBAznsskEugmilwG9u9lHVYRSuHANV5KzukVNCs/hzpWwPunslbLiR+ZxHJ0VyxOrnqaKBDN
+        9eEMty2REgKTPShBYeTcbK2WUPwZdFdsne6SNUfdtBilYBS01BY5SGxCKIl5fSFrvlTpc3RX/gyw1bKW
+        1xObUQpGqQErQXLV8D4qawEcRfearxmpEcUWCs5FL0iuGrp5wLMHkpN76K4Usl3tklaU+6MuoNHeeoEm
+        p8fQrNg8uRtsM57mwxkx7+gueqZX0l6jORzQSBelwGdodmGp7LKkVZFcQjcXcs+YnJ1HczisQbIegqa8
+        YIOzgyi5sHjqCCyrl6C5x3HpmRxG2QX8iENePHCq3hbuC5jvx1KCb/ZQug2lUNjZ1EaIKW9CwEcoRUde
+        Z/ukBIJwMFX2hCBYemoH+H6RY6GgPSjHAzTjUzkRng9ZkdDpU+ahGyw3ZT4cVntBg5OwcoaUSEbQLT6s
+        LNkOSYK63hRnAp4Lohf8fIpmhm3DdI0BLiUPfRJHIlzNHmCaxiGaD5IZ1ckj0LB55wZM0xzgK1zwGaAu
+        4Zp2FsObB15Axv0GCuCY09+zAMNbg9I2XN3hvizmVbofw1oL+AryTcmXsW4+ceHc6VgEg7yrHlTiWKRL
+        RzPAvaF8Tkj8CwfVTnSbW0AvXKspQKV9KM89xKqAQd9IBbxqedeHoaCSrdCU4q+YKa7qaP6/EDceQXxt
+        AIryD+ZQUa/9oWorAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 18</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblLocation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblLocation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 12pt, style=Bold</value>
+  </data>
+  <data name="lblLocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 18</value>
+  </data>
+  <data name="lblLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 28</value>
+  </data>
+  <data name="lblLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="lblLocation.Text" xml:space="preserve">
+    <value>Location Search</value>
+  </data>
+  <data name="&gt;&gt;lblLocation.Name" xml:space="preserve">
+    <value>lblLocation</value>
+  </data>
+  <data name="&gt;&gt;lblLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblLocation.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblLocation.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="gbMapContainer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="webView21.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="webView21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="webView21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>531, 566</value>
+  </data>
+  <data name="webView21.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;webView21.Name" xml:space="preserve">
+    <value>webView21</value>
+  </data>
+  <data name="&gt;&gt;webView21.Type" xml:space="preserve">
+    <value>Microsoft.Web.WebView2.WinForms.WebView2, Microsoft.Web.WebView2.WinForms, Version=1.0.3650.58, Culture=neutral, PublicKeyToken=2a8ab48044d2601e</value>
+  </data>
+  <data name="&gt;&gt;webView21.Parent" xml:space="preserve">
+    <value>gbMapContainer</value>
+  </data>
+  <data name="&gt;&gt;webView21.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbMapContainer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="gbMapContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 125</value>
+  </data>
+  <data name="gbMapContainer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="gbMapContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>533, 568</value>
+  </data>
+  <data name="gbMapContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;gbMapContainer.Name" xml:space="preserve">
+    <value>gbMapContainer</value>
+  </data>
+  <data name="&gt;&gt;gbMapContainer.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2GroupBox, Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;gbMapContainer.Parent" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;gbMapContainer.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="sataPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="sataPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="sataPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 710</value>
+  </data>
+  <data name="sataPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;sataPanel1.Name" xml:space="preserve">
+    <value>sataPanel1</value>
+  </data>
+  <data name="&gt;&gt;sataPanel1.Type" xml:space="preserve">
+    <value>SATAUiFramework.SATAPanel, SATAUiFramework, Version=1.0.0.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;sataPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;sataPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="guna2Elipse.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>120, 120</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 710</value>
+  </data>
+  <data name="&gt;&gt;guna2Elipse.Name" xml:space="preserve">
+    <value>guna2Elipse</value>
+  </data>
+  <data name="&gt;&gt;guna2Elipse.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Elipse, Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ucMapWithSearch</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
