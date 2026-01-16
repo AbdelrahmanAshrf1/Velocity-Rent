@@ -8,12 +8,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Velocity_Rent.Map.Services;
+using Velocity_Rent.Map.Services.Interfaces;
 using static Velocity_Rent.Map.Controls.ucSuggestionItem;
 
 namespace Velocity_Rent.Map.Controls
 {
     public partial class ucMapWithSearch : UserControl
     {
+        private IMapService _mapService;
         public ucMapWithSearch()
         {
             InitializeComponent();
@@ -44,18 +47,10 @@ namespace Velocity_Rent.Map.Controls
                 txtSearchBox.Text = item.Title;
 
                 if (item.Lat.HasValue && item.Lon.HasValue)
-                    MoveMap(item.Lat.Value, item.Lon.Value);
+                    _mapService.MoveToAsync(item.Lat.Value, item.Lon.Value);
 
                 suggestionList.Visible = false;
             };
-        }
-
-        public async void MoveMap(double lat, double lon)
-        {
-            if (webView21.CoreWebView2 == null) return;
-
-            string query = $"moveMap({lon.ToString(CultureInfo.InvariantCulture)}, {lat.ToString(CultureInfo.InvariantCulture)})";
-            await webView21.ExecuteScriptAsync(query);
         }
 
         private async void txtSearchBox_TextChanged(object sender, EventArgs e)
@@ -73,7 +68,6 @@ namespace Velocity_Rent.Map.Controls
 
             await LoadSuggestionsAsync(query);
         }
-
         private void LoadFavoritesAndRecent()
         {
             var Groups = new List<SuggestionGroup>()
@@ -87,12 +81,10 @@ namespace Velocity_Rent.Map.Controls
             else
                 suggestionList.Visible = false;
         }
-
         private SuggestionGroup CreateGroup(string title,List<SuggestionItem> list)
         {
             return new SuggestionGroup { Title = title, Items = list }; 
         }
-
         private async Task LoadSuggestionsAsync(string query)
         {
             try
@@ -121,12 +113,10 @@ namespace Velocity_Rent.Map.Controls
             }
             catch { suggestionList.Visible = false;}
         }
-
         private void txtSearchBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) suggestionList.Visible = false;
         }
-
         private async void CurrentLocation(object sender, EventArgs e)
         {
             try
@@ -142,7 +132,7 @@ namespace Velocity_Rent.Map.Controls
                     double lat = double.Parse(parts[0]);
                     double lon = double.Parse(parts[1]);
 
-                    MoveMap(lat, lon);
+                    _mapService.MoveToAsync(lat, lon);
                 }
             }
             catch
@@ -150,12 +140,10 @@ namespace Velocity_Rent.Map.Controls
                 MessageBox.Show("Unable to detect current location.");
             }
         }
-
         private async void ucMapWithSearch_Load(object sender, EventArgs e)
         {
-            await webView21.EnsureCoreWebView2Async();
-            string mapPath = Path.Combine(Application.StartupPath,"Map", "map.html");
-            webView21.Source = new Uri(mapPath);
+            _mapService = new MapboxService();
+            await _mapService.InitializeAsync(webView21);
         }
     }
-}
+   }
