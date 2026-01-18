@@ -22,6 +22,10 @@ namespace Velocity_Rent.Map.Controls
 
             this.BringToFront();
             this.Visible = false;
+
+            pnlFlow.HandleCreated += (s, e) => HideVerticalScrollBar();
+            pnlFlow.SizeChanged += (s, e) => HideVerticalScrollBar();
+            pnlFlow.Layout += (s, e) => HideVerticalScrollBar();
         }
 
         /// <summary>
@@ -49,6 +53,7 @@ namespace Velocity_Rent.Map.Controls
             }
 
             pnlFlow.ResumeLayout();
+            HideVerticalScrollBar();
             ShowAnimated(CalculateHeight());
         }
 
@@ -97,7 +102,15 @@ namespace Velocity_Rent.Map.Controls
         private int _targetHeight = 0;
         private int _animationStep = 18;
         private const int _minListHeight = 60;
-        private const int _maxListHeight = 320;
+        private const int _maxListHeight = 520;
+        private const int SB_VERT = 1;
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowScrollBar(IntPtr hWnd, int wBar, bool bShow);
+        private void HideVerticalScrollBar()
+        {
+            if (pnlFlow.IsHandleCreated) ShowScrollBar(pnlFlow.Handle, SB_VERT, false);
+        }
         private Control CreateGroupHeader(string groupTitle)
         {
             return new Label

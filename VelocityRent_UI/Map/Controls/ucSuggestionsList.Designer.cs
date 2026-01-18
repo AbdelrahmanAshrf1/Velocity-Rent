@@ -46,6 +46,7 @@
             // 
             // pnlFlow
             // 
+            this.pnlFlow.AutoScroll = true;
             this.pnlFlow.AutoSize = true;
             this.pnlFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(22)))));
