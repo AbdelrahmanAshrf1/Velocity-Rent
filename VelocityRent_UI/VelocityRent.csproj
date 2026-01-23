@@ -334,13 +334,13 @@
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Map\Services\Web Files\map.css">
+    <Content Include="Map\Services\WebFiles\map.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Map\Services\Web Files\map.html">
+    <Content Include="Map\Services\WebFiles\map.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Map\Services\Web Files\map.js">
+    <Content Include="Map\Services\WebFiles\map.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Images\ChatGPT_Image_Dec_29__2025__09_17_20_AM-Photoroom-removebg-preview.png" />
