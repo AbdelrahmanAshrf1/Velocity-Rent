@@ -5,11 +5,15 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent", "VelocityRent.csproj", "{82BFC86F-03E4-4011-848F-207FAE1329BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent_Utilities", "..\VelocityRent_Utilities\VelocityRent_Utilities.csproj", "{4AC104E8-3FB8-4332-88F6-3A62B4764C36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent.Utilities", "..\VelocityRent_Utilities\VelocityRent.Utilities.csproj", "{4AC104E8-3FB8-4332-88F6-3A62B4764C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent_DTO", "..\VelocityRent_DTO\VelocityRent_DTO.csproj", "{1C7B7AAA-850E-43E9-BEAF-8B61BC7F95F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent.DTO", "..\VelocityRent_DTO\VelocityRent.DTO.csproj", "{1C7B7AAA-850E-43E9-BEAF-8B61BC7F95F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent_DAL", "..\VelocityRent_DAL\VelocityRent_DAL.csproj", "{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent.DAL", "..\VelocityRent_DAL\VelocityRent.DAL.csproj", "{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent.BLL", "..\VelocityRent_DLL\VelocityRent.BLL.csproj", "{802FEF5E-4E7E-43E7-9429-DC56130C5F09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityRent.Entities", "..\VelocityRent.Entities\VelocityRent.Entities.csproj", "{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802FEF5E-4E7E-43E7-9429-DC56130C5F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802FEF5E-4E7E-43E7-9429-DC56130C5F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802FEF5E-4E7E-43E7-9429-DC56130C5F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802FEF5E-4E7E-43E7-9429-DC56130C5F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

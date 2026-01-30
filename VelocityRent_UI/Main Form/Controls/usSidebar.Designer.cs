@@ -30,11 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usSidebar));
-            SATAUiFramework.BorderRadius borderRadius23 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.plIndicator = new System.Windows.Forms.Panel();
             this.pnlUserInfo = new System.Windows.Forms.Panel();
+            this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnHome = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -46,13 +47,13 @@
             this.btnSettings = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnViewLinkedinProfile = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pnlSidebar = new SATAUiFramework.SATAPanel();
-            this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
             this.btnFindNearestCar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnContactMe = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2GradientTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnlUserInfo.SuspendLayout();
-            this.pnlSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).BeginInit();
+            this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -89,6 +90,23 @@
             this.pnlUserInfo.Name = "pnlUserInfo";
             this.pnlUserInfo.Size = new System.Drawing.Size(190, 159);
             this.pnlUserInfo.TabIndex = 8;
+            // 
+            // sataPictureBox1
+            // 
+            this.sataPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.sataPictureBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.sataPictureBox1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.sataPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.sataPictureBox1.BorderSize = 2;
+            this.sataPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sataPictureBox1.GradientAngle = 90F;
+            this.sataPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("sataPictureBox1.Image")));
+            this.sataPictureBox1.Location = new System.Drawing.Point(55, 4);
+            this.sataPictureBox1.Name = "sataPictureBox1";
+            this.sataPictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.sataPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.sataPictureBox1.TabIndex = 11;
+            this.sataPictureBox1.TabStop = false;
             // 
             // lblUserRole
             // 
@@ -290,7 +308,7 @@
             this.btnViewLinkedinProfile.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnViewLinkedinProfile.ForeColor = System.Drawing.Color.White;
             this.btnViewLinkedinProfile.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnViewLinkedinProfile.Location = new System.Drawing.Point(17, 730);
+            this.btnViewLinkedinProfile.Location = new System.Drawing.Point(17, 687);
             this.btnViewLinkedinProfile.Name = "btnViewLinkedinProfile";
             this.btnViewLinkedinProfile.Size = new System.Drawing.Size(160, 37);
             this.btnViewLinkedinProfile.TabIndex = 17;
@@ -303,12 +321,13 @@
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(32)))));
             this.pnlSidebar.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(22)))));
             this.pnlSidebar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(64)))));
-            borderRadius23.BottomLeft = 1;
-            borderRadius23.BottomRight = 1;
-            borderRadius23.TopLeft = 1;
-            borderRadius23.TopRight = 1;
-            this.pnlSidebar.BorderRadius = borderRadius23;
+            borderRadius1.BottomLeft = 1;
+            borderRadius1.BottomRight = 1;
+            borderRadius1.TopLeft = 1;
+            borderRadius1.TopRight = 1;
+            this.pnlSidebar.BorderRadius = borderRadius1;
             this.pnlSidebar.BorderThickness = 0;
+            this.pnlSidebar.Controls.Add(this.btnLogOut);
             this.pnlSidebar.Controls.Add(this.btnViewLinkedinProfile);
             this.pnlSidebar.Controls.Add(this.btnSettings);
             this.pnlSidebar.Controls.Add(this.btnMaintenance);
@@ -326,23 +345,6 @@
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(190, 820);
             this.pnlSidebar.TabIndex = 1;
-            // 
-            // sataPictureBox1
-            // 
-            this.sataPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.sataPictureBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.sataPictureBox1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.sataPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.sataPictureBox1.BorderSize = 2;
-            this.sataPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sataPictureBox1.GradientAngle = 90F;
-            this.sataPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("sataPictureBox1.Image")));
-            this.sataPictureBox1.Location = new System.Drawing.Point(55, 4);
-            this.sataPictureBox1.Name = "sataPictureBox1";
-            this.sataPictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.sataPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.sataPictureBox1.TabIndex = 11;
-            this.sataPictureBox1.TabStop = false;
             // 
             // btnFindNearestCar
             // 
@@ -384,6 +386,27 @@
             this.btnContactMe.TextOffset = new System.Drawing.Point(0, 5);
             this.btnContactMe.Click += new System.EventHandler(this.btnFindNearestCar_Click);
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnLogOut.BorderRadius = 20;
+            this.btnLogOut.BorderThickness = 2;
+            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnLogOut.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ForeColor = System.Drawing.Color.White;
+            this.btnLogOut.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnLogOut.Location = new System.Drawing.Point(17, 730);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(160, 44);
+            this.btnLogOut.TabIndex = 18;
+            this.btnLogOut.Text = "Log out";
+            // 
             // usSidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -394,8 +417,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pnlUserInfo.ResumeLayout(false);
             this.pnlUserInfo.PerformLayout();
-            this.pnlSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).EndInit();
+            this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -419,5 +442,6 @@
         private SATAUiFramework.Controls.SATAPictureBox sataPictureBox1;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnFindNearestCar;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnContactMe;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnLogOut;
     }
 }

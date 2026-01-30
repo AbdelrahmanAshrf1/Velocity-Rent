@@ -10,10 +10,8 @@ using VelocityRent_Utilities;
 
 namespace Velocity_Rent_DAL
 {
-    public static class SystemSettingDAL
+    public static class SystemSettingRepository
     {
-        private static readonly string _ConnectionString = ConfigurationManager.ConnectionStrings["VelocityRentDB"].ConnectionString;
-        public static SqlConnection GetConnection() => new SqlConnection(_ConnectionString);
         public static string GetSettingValue(string settingName)
         {
             string value = null;
@@ -21,7 +19,7 @@ namespace Velocity_Rent_DAL
 
             try
             {
-                using (SqlConnection connection = GetConnection())
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@SettingName",SqlDbType.NVarChar).Value = settingName;
@@ -33,7 +31,8 @@ namespace Velocity_Rent_DAL
             }
             catch (Exception ex)
             {
-                Logger.ErrorLog($"[GetSettingValue] {ex}");
+                Logger.Error($"[GetSettingValue] {ex}");
+                return null;
             }
 
             return value;
@@ -44,7 +43,7 @@ namespace Velocity_Rent_DAL
 
             try
             {
-                using (SqlConnection connection = GetConnection())
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@Value", SqlDbType.NVarChar).Value = newValue ?? (object)DBNull.Value;
@@ -59,28 +58,11 @@ namespace Velocity_Rent_DAL
             }
             catch (Exception ex)
             {
-                Logger.ErrorLog($"[UpdateSettingValue] {ex}");
+                Logger.Error($"[UpdateSettingValue] {ex}");
                 return false;
             }
         }
-        public static bool IsWizardSetupCompleted()
-        {
-            try
-            {
-                string value = GetSettingValue("SetupCompleted");
-
-                if(string.IsNullOrEmpty(value)) return false;
-                return (value.ToLower() == "yes");
-            }
-            catch(Exception ex) 
-            {
-                Logger.ErrorLog($"[IsWizardSetupCompleted] {ex}");
-                return false;
-            }
-        }
-        public static void MarkWizardSetupAsCompleted()
-        {
-            UpdateSettingValue("SetupCompleted", "yes");
-        }
+        public static bool IsWizardSetupCompleted() => string.Equals(GetSettingValue("SetupCompleted"),"yes",StringComparison.OrdinalIgnoreCase);
+        public static void MarkWizardSetupAsCompleted() => UpdateSettingValue("SetupCompleted", "yes");
     }
 }

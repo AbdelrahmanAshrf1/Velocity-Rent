@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VelocityRent_Utilities
 {
-    public class RegistryHelper
+    public static class RegistryHelper
     {
         private const string BasePath = @"Software\VelocityRent";
 
@@ -23,7 +23,7 @@ namespace VelocityRent_Utilities
             }
             catch (Exception ex)
             {
-                Logger.ErrorLog($"Error setting registry value : {ex.Message}");
+                Logger.Error($"Error setting registry value : {ex.Message}");
             }
         }
         public static T GetValue<T>(string subKey, string valueName, T defaultValue = default)
@@ -40,7 +40,7 @@ namespace VelocityRent_Utilities
             }
             catch (Exception ex)
             {
-                Logger.ErrorLog($"Error Getting registry value : {ex.Message}");
+                Logger.Error($"Error Getting registry value : {ex.Message}");
                 return defaultValue;
             }
         }
@@ -55,7 +55,7 @@ namespace VelocityRent_Utilities
             }
             catch (Exception ex)
             {
-                Logger.ErrorLog($"Error Deleting registry value : {ex.Message}");
+                Logger.Error($"Error Deleting registry value : {ex.Message}");
             }
         }
         public static void DeleteSubKey(string subKey)

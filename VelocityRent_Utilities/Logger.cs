@@ -9,34 +9,32 @@ namespace VelocityRent_Utilities
 {
     public static class Logger
     {
-        private static readonly string _SourceName = "Velocity Rent";
-        
-        static Logger()
-        {
-            _Configure();
-        }
+        private static readonly string SourceName = "Velocity Rent";
+        private static readonly string LogName = "Application"; // Windows default log
 
-        private static void _Configure()
+        static Logger() => TryConfigure();
+
+        private static void TryConfigure()
         {
             try
             {
-                if (!EventLog.SourceExists(_SourceName))
-                    EventLog.CreateEventSource(_SourceName, "Application");
+                if (!EventLog.SourceExists(SourceName))
+                    EventLog.CreateEventSource(SourceName, LogName);
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"[Logger Warning] Failed to configure event source: {ex.Message}");
+                Debug.WriteLine($"[Logger Warning] Failed to configure event source: {ex.Message}");
             }
         }
 
-        public static void ErrorLog(string message) => _Log(message, EventLogEntryType.Error);
-        public static void WarningLog(string message) => _Log(message, EventLogEntryType.Warning);
-        public static void InformationLog(string message) => _Log(message, EventLogEntryType.Information);
-        private static void _Log(string message,EventLogEntryType type)
+        public static void Error(string message) => LogInternal(message, EventLogEntryType.Error);
+        public static void Warning(string message) => LogInternal(message, EventLogEntryType.Warning);
+        public static void Information(string message) => LogInternal(message, EventLogEntryType.Information);
+        private static void LogInternal(string message,EventLogEntryType type)
         {
             try
             {
-                EventLog.WriteEntry(_SourceName, message, type);
+                EventLog.WriteEntry(SourceName, message, type);
             }
             catch (Exception ex) 
             {

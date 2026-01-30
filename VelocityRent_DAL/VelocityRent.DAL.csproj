@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C7B7AAA-850E-43E9-BEAF-8B61BC7F95F2}</ProjectGuid>
+    <ProjectGuid>{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DTO</RootNamespace>
-    <AssemblyName>DTO</AssemblyName>
+    <RootNamespace>Velocity_Rent_DAL</RootNamespace>
+    <AssemblyName>Velocity_Rent_DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,8 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SystemSettingDTO.cs" />
+    <Compile Include="AddressRepository.cs" />
+    <Compile Include="DbConnectionFactory.cs" />
+    <Compile Include="SystemSettingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VelocityRent.Entities\VelocityRent.Entities.csproj">
+      <Project>{a6d9d2c1-1b1b-4699-b17f-53994aa27d54}</Project>
+      <Name>VelocityRent.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VelocityRent_Utilities\VelocityRent.Utilities.csproj">
+      <Project>{4ac104e8-3fb8-4332-88f6-3a62b4764c36}</Project>
+      <Name>VelocityRent.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
