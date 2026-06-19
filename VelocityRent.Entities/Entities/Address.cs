@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace VelocityRent.Entities
 {
     public class Address
@@ -17,8 +12,9 @@ namespace VelocityRent.Entities
         public decimal Longitude { get; private set; }
         public bool IsActive { get; private set; }
 
-        public Address(string city, string state, string zipCode,string country, decimal latitude, decimal longitude)
+        public Address(int id, string city, string state, string zipCode,string country, decimal latitude, decimal longitude)
         {
+            ID = id;
             City = city;
             State = state;
             ZipCode = zipCode;
@@ -36,6 +32,8 @@ namespace VelocityRent.Entities
             Latitude = latitude;
             Longitude = longitude;
         }
+        public void Deactivate() => this.IsActive = false;
+
     }
 
 }

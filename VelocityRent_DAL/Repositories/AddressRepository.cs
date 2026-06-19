@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
 using VelocityRent_Utilities;
 
 namespace Velocity_Rent_DAL
 {
-    public static class AddressRepository
+    public  class AddressRepository : IAddressRepository
     {
-        public static int InsertAddress(Address address)
+        public  int Add(Address address)
         {
             int id = -1;
             try
@@ -45,7 +42,7 @@ namespace Velocity_Rent_DAL
 
             return id;
         }
-        public static bool UpdateAddress(Address address)
+        public  bool Update(Address address)
         {
             int rowsAffected = 0;
             try
@@ -77,6 +74,69 @@ namespace Velocity_Rent_DAL
             }
 
             return rowsAffected > 0;
+        }
+        public bool Delete(int id)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                string qurry = @"DELETE FROM Addresses WHERE ID = @ID";
+
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(qurry, connection))
+                {
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+                return false;
+            }
+
+            return rowsAffected > 0;
+        }
+        public Address GetByID(int id)
+        {
+            Address address = null;
+            try
+            {
+                string qurry = @"SELECT * FROM Addresses WHERE AddressID = @ID";
+
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(qurry, connection))
+                {
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+
+                    connection.Open();
+                    using(SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if(!reader.Read()) return null;
+                       
+                         address = new Address
+                         (
+                             reader.GetInt32(0),
+                             reader.GetString(1),
+                             reader.GetString(2),
+                             reader.GetString(3),
+                             reader.GetString(4),
+                             reader.GetDecimal(5),
+                             reader.GetDecimal(6)
+                         );
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+
+            return address;
         }
     }
 }

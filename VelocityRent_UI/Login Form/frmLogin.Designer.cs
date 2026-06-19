@@ -45,7 +45,9 @@
             this.btnViewLinkedinProfile = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.chkRemmberMe = new Guna.UI2.WinForms.Guna2CheckBox();
             this.lblContactUs = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbLeftImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbLeftImage
@@ -132,7 +134,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.label5.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkGray;
+            this.label5.ForeColor = System.Drawing.Color.Gray;
             this.label5.Location = new System.Drawing.Point(603, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 81);
@@ -152,19 +154,20 @@
             this.txtUsername.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtUsername.ForeColor = System.Drawing.Color.Gray;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsername.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtUsername.IconLeft")));
             this.txtUsername.Location = new System.Drawing.Point(535, 173);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtUsername.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtUsername.PlaceholderText = "Username";
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(347, 48);
             this.txtUsername.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtUsername.TabIndex = 8;
             this.txtUsername.TextOffset = new System.Drawing.Point(10, 0);
+            this.txtUsername.Validated += new System.EventHandler(this.txtUsername_Validated);
             // 
             // guna2DragControl
             // 
@@ -178,7 +181,7 @@
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2ControlBox1.BackColor = System.Drawing.Color.White;
             this.guna2ControlBox1.BorderRadius = 10;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Gainsboro;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Gray;
             this.guna2ControlBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
             this.guna2ControlBox1.Location = new System.Drawing.Point(908, 12);
@@ -199,20 +202,21 @@
             this.txtPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtPassword.ForeColor = System.Drawing.Color.Gray;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPassword.IconLeft")));
             this.txtPassword.Location = new System.Drawing.Point(535, 261);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtPassword.PlaceholderText = "Password";
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(347, 48);
             this.txtPassword.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPassword.TabIndex = 10;
             this.txtPassword.TextOffset = new System.Drawing.Point(10, 0);
+            this.txtPassword.Validated += new System.EventHandler(this.txtPassword_Validated);
             // 
             // btnViewLinkedinProfile
             // 
@@ -232,6 +236,7 @@
             this.btnViewLinkedinProfile.Size = new System.Drawing.Size(160, 37);
             this.btnViewLinkedinProfile.TabIndex = 18;
             this.btnViewLinkedinProfile.Text = "R E G I S T E R";
+            this.btnViewLinkedinProfile.Click += new System.EventHandler(this.btnViewLinkedinProfile_Click);
             // 
             // chkRemmberMe
             // 
@@ -255,6 +260,7 @@
             // lblContactUs
             // 
             this.lblContactUs.AutoSize = true;
+            this.lblContactUs.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblContactUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblContactUs.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContactUs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
@@ -263,6 +269,11 @@
             this.lblContactUs.Size = new System.Drawing.Size(157, 20);
             this.lblContactUs.TabIndex = 20;
             this.lblContactUs.Text = "Follow us for more ....";
+            this.lblContactUs.Click += new System.EventHandler(this.lblContactUs_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmLogin
             // 
@@ -290,6 +301,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pbLeftImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,5 +324,6 @@
         private Guna.UI2.WinForms.Guna2CheckBox chkRemmberMe;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnViewLinkedinProfile;
         private System.Windows.Forms.Label lblContactUs;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

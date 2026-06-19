@@ -44,20 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressRepository.cs" />
+    <Compile Include="Interfaces\IAddressRepository.cs" />
+    <Compile Include="Interfaces\IPersonRepositroy.cs" />
+    <Compile Include="Interfaces\ISystemSettingRepository.cs" />
+    <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="DbConnectionFactory.cs" />
-    <Compile Include="SystemSettingRepository.cs" />
+    <Compile Include="Repositories\PersonRepository.cs" />
+    <Compile Include="Repositories\SystemSettingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VelocityRent.Entities\VelocityRent.Entities.csproj">
+    <ProjectReference Include="..\VelocityRent.Entities\VelocityRent.Domain.csproj">
       <Project>{a6d9d2c1-1b1b-4699-b17f-53994aa27d54}</Project>
-      <Name>VelocityRent.Entities</Name>
+      <Name>VelocityRent.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\VelocityRent_Utilities\VelocityRent.Utilities.csproj">
       <Project>{4ac104e8-3fb8-4332-88f6-3a62b4764c36}</Project>
       <Name>VelocityRent.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

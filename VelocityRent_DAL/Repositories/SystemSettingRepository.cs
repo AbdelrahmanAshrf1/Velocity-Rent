@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
+using Velocity_Rent_DAL.Interfaces;
 using VelocityRent_Utilities;
 
 namespace Velocity_Rent_DAL
 {
-    public static class SystemSettingRepository
+    public  class SystemSettingRepository : ISystemSettingRepository
     {
-        public static string GetSettingValue(string settingName)
+        public  string GetSettingValue(string settingName)
         {
             string value = null;
             string query = @"SELECT SettingValue FROM SystemSettings WHERE SettingName = @SettingName;";
@@ -37,7 +38,7 @@ namespace Velocity_Rent_DAL
 
             return value;
         }
-        public static bool UpdateSettingValue(string settingName, string newValue)
+        public  bool UpdateSettingValue(string settingName, string newValue)
         {
             string query = @"UPDATE SystemSettings SET SettingValue = @Value WHERE SettingName = @SettingName;";
 
@@ -62,7 +63,7 @@ namespace Velocity_Rent_DAL
                 return false;
             }
         }
-        public static bool IsWizardSetupCompleted() => string.Equals(GetSettingValue("SetupCompleted"),"yes",StringComparison.OrdinalIgnoreCase);
-        public static void MarkWizardSetupAsCompleted() => UpdateSettingValue("SetupCompleted", "yes");
+        public  bool IsWizardSetupCompleted() => string.Equals(GetSettingValue("SetupCompleted"),"yes",StringComparison.OrdinalIgnoreCase);
+        public  void MarkWizardSetupAsCompleted() => UpdateSettingValue("SetupCompleted", "yes");
     }
 }
