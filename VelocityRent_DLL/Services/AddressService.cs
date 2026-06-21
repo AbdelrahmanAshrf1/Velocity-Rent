@@ -1,68 +1,74 @@
-﻿using AutoMapper;
-using DTO.Address;
+﻿using DTO.Address;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
+using System.Linq;
 using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
-using VelocityRent_DLL.Services;
+using VelocityRent_DLL.Mappers;
+using VelocityRent_Utilities;
 
 namespace VelocityRent_BLL
 {
     public class AddressService 
     {
-        private readonly IAddressRepository _addressRepository;
-        private readonly IValidator<CreateAddressDto> _createValidator;
-        private readonly IValidator<UpdateAddressDto> _updateValidator;
+        private readonly IAddressRepository _repo;
+        private readonly IValidator<AddAddressDto> _addAddressValidator;
+        private readonly IValidator<UpdateAddressDto> _updateAddressValidator;
         public AddressService(
-            IMapper mapper,
             IAddressRepository addressRepository,
-            IValidator<CreateAddressDto> createValidator,
-            IValidator<UpdateAddressDto> updateValidator)
-            : base(mapper)
+            IValidator<AddAddressDto> addAddressValidator,
+            IValidator<UpdateAddressDto> updateAddressValidator)
         {
-            _addressRepository = addressRepository;
-            _updateValidator = updateValidator;
-            _createValidator = createValidator;
+            _repo = addressRepository;
+            _addAddressValidator = addAddressValidator;
+            _updateAddressValidator = updateAddressValidator;
         }
 
-        public int Add(CreateAddressDto dto)
+        public int AddAddress(AddAddressDto dto)
         {
-            Validate(_createValidator, dto);
-            Address newAddress = new Address
-            (
-                0, 
-                dto.City,
-                dto.State,
-                dto.ZipCode,
-                dto.Country,
-                dto.Latitude,
-                dto.Longitude
-            );
-            return _addressRepository.Add(newAddress);
+            var validationResult = _addAddressValidator.Validate(dto);
+            if(!validationResult.IsValid)
+            {
+                LogValidationResult(validationResult);
+                return -1;
+            }
+            Address address = AddressMapper.ToEntity(dto);
+            return _repo.Add(address);
         }
-        public bool Update(UpdateAddressDto dto)
+        public bool UpdateAddress(UpdateAddressDto dto)
         {
-            Validate(_updateValidator, dto);
-            Address existingAddress = _addressRepository.GetByID(dto.ID);
-            if (existingAddress == null) throw new Exception("Address not found.");
-            existingAddress.Update
-            (
-                dto.City,
-                dto.State,
-                dto.ZipCode,
-                dto.Country,
-                dto.Latitude,
-                dto.Longitude
-            );
-            return _addressRepository.Update(existingAddress);
+            var validationResult = _updateAddressValidator.Validate(dto);
+
+            if(!validationResult.IsValid)
+            {
+                LogValidationResult(validationResult);
+                return false;
+            }
+
+            Address address = _repo.GetByID(dto.ID);
+            if(address == null) return false;
+
+            AddressMapper.UpdateEntity(dto, address);
+            return _repo.Update(address);
         }
-        public bool Delete(int id) => _addressRepository.Delete(id);
-        public ViewAddressDto GetByID(int id)
+        // Soft delete
+        public bool Delete(int id)
         {
-            Address address = _addressRepository.GetByID(id);
-            if (address == null) throw new Exception("Address not found.");
-            ViewAddressDto dto = _mapper.Map<ViewAddressDto>(address);
-            return dto;
+            Address address = _repo.GetByID(id);
+            if(address == null) return false;
+            address.Deactivate();
+            return _repo.Update(address);
+        }
+        public AddressDto GetByID(int id)
+        {
+            Address address = _repo.GetByID(id);
+            return address == null ? null : AddressMapper.ToDto(address);
+        }
+
+        private void LogValidationResult(ValidationResult Result)
+        {
+            Logger.Error(string.Join(Environment.NewLine, Result.Errors.Select(x => x.ErrorMessage)));
         }
     }
 }

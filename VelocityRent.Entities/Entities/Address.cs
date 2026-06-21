@@ -12,9 +12,16 @@ namespace VelocityRent.Entities
         public decimal Longitude { get; private set; }
         public bool IsActive { get; private set; }
 
-        public Address(int id, string city, string state, string zipCode,string country, decimal latitude, decimal longitude)
+        // Constructor for NEW Address
+        public Address(
+            string city,
+            string state,
+            string zipCode,
+            string country,
+            decimal latitude,
+            decimal longitude
+            )
         {
-            ID = id;
             City = city;
             State = state;
             ZipCode = zipCode;
@@ -23,7 +30,35 @@ namespace VelocityRent.Entities
             Longitude = longitude;
             IsActive = true;
         }
-        public void Update(string city, string state, string zipCode, string country, decimal latitude, decimal longitude)
+
+        // Constructor for EXISTING Address loaded from DB
+        public Address(
+            int id,
+            string city,
+            string state,
+            string zipCode,
+            string country,
+            decimal latitude,
+            decimal longitude,
+            bool isActive)
+             : this(
+                 city,
+                 state,
+                 zipCode,
+                 country,
+                 latitude,
+                 longitude)
+        {
+            ID = id;
+            IsActive = isActive;
+        }
+        public void Update(
+            string city,
+            string state,
+            string zipCode,
+            string country,
+            decimal latitude,
+            decimal longitude)
         {
             City = city;
             State = state;
@@ -32,7 +67,11 @@ namespace VelocityRent.Entities
             Latitude = latitude;
             Longitude = longitude;
         }
-        public void Deactivate() => this.IsActive = false;
+        public void Deactivate()
+        {
+            if (!IsActive) return;
+            IsActive = false;
+        }
 
     }
 

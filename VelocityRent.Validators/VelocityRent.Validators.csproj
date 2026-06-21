@@ -55,6 +55,7 @@
     <Compile Include="Validators\Address\CreateAddressDtoValidator.cs" />
     <Compile Include="Validators\Address\UpdateAddressDtoValidator.cs" />
     <Compile Include="Validators\Person\AddPersonValidator.cs" />
+    <Compile Include="Validators\Person\UpdatePersonValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VelocityRent_DTO\VelocityRent.DTO.csproj">

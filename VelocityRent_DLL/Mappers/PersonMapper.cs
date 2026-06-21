@@ -1,6 +1,5 @@
 ﻿using DTO;
 using DTO.Person;
-using System;
 using VelocityRent.Entities;
 
 namespace VelocityRent_DLL.Mappers
@@ -32,9 +31,7 @@ namespace VelocityRent_DLL.Mappers
             };
         }
 
-        public static void UpdateEntity(
-            UpdatePersonDto dto,
-            Person person)
+        public static void UpdateEntity(UpdatePersonDto dto,Person person)
         {
             person.Update(
                 firstName: dto.FirstName,

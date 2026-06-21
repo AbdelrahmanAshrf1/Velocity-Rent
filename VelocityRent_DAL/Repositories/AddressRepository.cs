@@ -25,9 +25,17 @@ namespace Velocity_Rent_DAL
                     command.Parameters.Add("@State", SqlDbType.NVarChar).Value = address.State;
                     command.Parameters.Add("@ZipCode", SqlDbType.NVarChar).Value = address.ZipCode;
                     command.Parameters.Add("@Country", SqlDbType.NVarChar).Value = address.Country;
-                    command.Parameters.Add("@Latitude", SqlDbType.Decimal).Value = address.Latitude;
-                    command.Parameters.Add("@Longitude", SqlDbType.Decimal).Value = address.Longitude;
                     command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = address.IsActive;
+
+                    var latitudeParam = command.Parameters.Add("@Latitude", SqlDbType.Decimal);
+                    latitudeParam.Precision = 9;
+                    latitudeParam.Scale = 6;
+                    latitudeParam.Value = address.Latitude;
+
+                    var longitudeParam = command.Parameters.Add("@Longitude", SqlDbType.Decimal);
+                    longitudeParam.Precision = 9;
+                    longitudeParam.Scale = 6;
+                    longitudeParam.Value = address.Longitude;
 
                     connection.Open();
                     object result = command.ExecuteScalar();
@@ -36,7 +44,7 @@ namespace Velocity_Rent_DAL
             }
             catch(Exception ex) 
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return -1;
             }
 
@@ -49,7 +57,7 @@ namespace Velocity_Rent_DAL
             {
                 string qurry = @"UPDATE Addresses
                        SET City = @City , State = @State, ZipCode = @ZipCode, Country = @Country, Latitude = @Latitude, Longitude = @Longitude, IsActive = @IsActive
-                       WHERE ID = @ID";
+                       WHERE AddressID = @ID";
 
                 using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(qurry, connection))
@@ -59,9 +67,17 @@ namespace Velocity_Rent_DAL
                     command.Parameters.Add("@State", SqlDbType.NVarChar).Value = address.State;
                     command.Parameters.Add("@ZipCode", SqlDbType.NVarChar).Value = address.ZipCode;
                     command.Parameters.Add("@Country", SqlDbType.NVarChar).Value = address.Country;
-                    command.Parameters.Add("@Latitude", SqlDbType.Decimal).Value = address.Latitude;
-                    command.Parameters.Add("@Longitude", SqlDbType.Decimal).Value = address.Longitude;
                     command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = address.IsActive;
+
+                    var latitudeParam = command.Parameters.Add("@Latitude", SqlDbType.Decimal);
+                    latitudeParam.Precision = 9;
+                    latitudeParam.Scale = 6;
+                    latitudeParam.Value = address.Latitude;
+
+                    var longitudeParam = command.Parameters.Add("@Longitude", SqlDbType.Decimal);
+                    longitudeParam.Precision = 9;
+                    longitudeParam.Scale = 6;
+                    longitudeParam.Value = address.Longitude;
 
                     connection.Open();
                     rowsAffected = command.ExecuteNonQuery();
@@ -69,7 +85,7 @@ namespace Velocity_Rent_DAL
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return false;
             }
 
@@ -80,7 +96,7 @@ namespace Velocity_Rent_DAL
             int rowsAffected = 0;
             try
             {
-                string qurry = @"DELETE FROM Addresses WHERE ID = @ID";
+                string qurry = @"DELETE FROM Addresses WHERE AddressID = @ID";
 
                 using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(qurry, connection))
@@ -94,7 +110,7 @@ namespace Velocity_Rent_DAL
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return false;
             }
 
@@ -126,14 +142,15 @@ namespace Velocity_Rent_DAL
                              reader.GetString(3),
                              reader.GetString(4),
                              reader.GetDecimal(5),
-                             reader.GetDecimal(6)
+                             reader.GetDecimal(6),
+                             reader.GetBoolean(7)
                          );
                     }
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
             }
 
             return address;

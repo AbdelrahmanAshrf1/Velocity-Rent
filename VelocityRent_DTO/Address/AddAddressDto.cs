@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DTO.Address
 {
-    public abstract class BaseAddressDto
+    public class AddAddressDto 
     {
         public string City { get; set; }
         public string State { get; set; }

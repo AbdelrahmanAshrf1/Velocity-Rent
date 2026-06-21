@@ -1,13 +1,12 @@
 ﻿using DTO.Address;
 using FluentValidation;
 
-namespace VelocityRent_DLL.Validators.Address
+namespace VelocityRent.Validators.Validators.Address
 {
-    public class UpdateAddressDtoValidator :AbstractValidator<UpdateAddressDto>
+    public class AddAddressDtoValidator :AbstractValidator<AddAddressDto>
     {
-        public UpdateAddressDtoValidator()
+        protected AddAddressDtoValidator()
         {
-            RuleFor(x => x.ID).GreaterThan(0);
             RuleFor(x => x.City).NotEmpty().MaximumLength(100);
             RuleFor(x => x.State).NotEmpty().MaximumLength(100);
             RuleFor(x => x.ZipCode).NotEmpty().MaximumLength(20);
