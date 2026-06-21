@@ -18,7 +18,6 @@ namespace VelocityRent.Entities
         public bool IsActive { get; private set; }
 
         public Person(
-            int id,
             string firstName,
             string lastName,
             string email, 
@@ -26,11 +25,8 @@ namespace VelocityRent.Entities
             DateTime dateOfBirth,
             string nationalID,
             int addressID,
-            string profileImage,
-            DateTime createDate,
-            bool isActive)
+            string profileImage)
         {
-            this.ID = id;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
@@ -39,8 +35,8 @@ namespace VelocityRent.Entities
             this.NationalID = nationalID;
             this.AddressID = addressID;
             this.ProfileImage = profileImage;
-            this.CreateDate = createDate;
-            this.IsActive = isActive;
+            this.CreateDate = DateTime.Now;
+            this.IsActive = true;
         }
 
         public void Update(
