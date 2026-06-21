@@ -41,7 +41,7 @@ namespace Velocity_Rent_DAL.Repositories
             }
             catch(Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return -1;
             }
 
@@ -83,8 +83,37 @@ namespace Velocity_Rent_DAL.Repositories
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return null;
+            }
+        }
+        public bool Exists(int id)
+        {
+            try
+            {
+                string query = @"
+                                SELECT CASE
+                                    WHEN EXISTS (
+                                        SELECT 1
+                                        FROM People
+                                        WHERE PersonID = @ID)
+                                    THEN 1
+                                    ELSE 0
+                                END";
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                return false;
             }
         }
         public bool Update(Person person)
@@ -117,7 +146,7 @@ namespace Velocity_Rent_DAL.Repositories
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return false;
             }
         }
@@ -139,7 +168,7 @@ namespace Velocity_Rent_DAL.Repositories
             }
             catch(Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return false;
             }
         }
@@ -180,7 +209,7 @@ namespace Velocity_Rent_DAL.Repositories
             }
             catch(Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error(ex.ToString());
                 return null;
             }
 

@@ -5,7 +5,7 @@ namespace DTO.Person
 {
     public class UpdatePersonDto 
     {
-        public int ID { get; set; }
+        public int ID { get; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

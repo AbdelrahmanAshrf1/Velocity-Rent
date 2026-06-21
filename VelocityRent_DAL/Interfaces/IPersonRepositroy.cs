@@ -7,6 +7,7 @@ namespace Velocity_Rent_DAL.Interfaces
     public interface IPersonRepositroy
     {
         int Add(Person person);
+        bool Exists(int id);
         bool Update(Person person);
         bool Delete(int id);
         Person GetByID(int id);

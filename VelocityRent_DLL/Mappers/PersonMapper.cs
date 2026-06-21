@@ -10,7 +10,6 @@ namespace VelocityRent_DLL.Mappers
         public static Person ToEntity(AddPersonDto dto)
         {
             return new Person(
-                id: 0,
                 firstName: dto.FirstName,
                 lastName: dto.LastName,
                 email: dto.Email,
@@ -18,9 +17,7 @@ namespace VelocityRent_DLL.Mappers
                 dateOfBirth: dto.DateOfBirth,
                 nationalID: dto.NationalID,
                 addressID: dto.AddressID,
-                profileImage: dto.ProfileImage,
-                createDate: DateTime.Now,
-                isActive: true
+                profileImage: dto.ProfileImage
             );
         }
 
