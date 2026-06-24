@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAddressRepository.cs" />
+    <Compile Include="Interfaces\IUserRepositroy.cs" />
     <Compile Include="Interfaces\IPersonRepositroy.cs" />
     <Compile Include="Interfaces\ISystemSettingRepository.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\SystemSettingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VelocityRent.Entities\VelocityRent.Domain.csproj">

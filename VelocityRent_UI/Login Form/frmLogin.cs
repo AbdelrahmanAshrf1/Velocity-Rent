@@ -29,7 +29,7 @@ namespace Velocity_Rent.Login_Form
                 string username = txtUsername.Text.Trim();
                 string password = txtPassword.Text.Trim();
 
-                UserDto userDto = new UserDto();
+                AddUserDto userDto = new AddUserDto();
                 userDto.Username = username;
             }
             else
