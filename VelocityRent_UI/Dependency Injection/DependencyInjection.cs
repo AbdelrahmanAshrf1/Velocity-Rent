@@ -6,19 +6,20 @@ using Velocity_Rent.Login_Form;
 using Velocity_Rent_DAL.Interfaces;
 using Velocity_Rent_DAL.Repositories;
 using VelocityRent.Validators.Validators.User;
+using VelocityRent_DLL.Interfaces;
 using VelocityRent_DLL.Services;
 
 namespace Velocity_Rent.Dependency_Injection
 {
     public static class DependencyInjection
     {
-        public static ServiceProvider Configure()
+        public static ServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
 
-            services.AddTransient<IUserRepositroy,UserRepository>();
+            services.AddTransient<IUserRepository,UserRepository>();
 
-            services.AddTransient<UserService>();
+            services.AddTransient<IUserService,UserService>();
 
             services.AddTransient<IValidator<LoginDto>, LoginDtoValidator>();
             services.AddTransient<IValidator<AddUserDto>, AddUserDtoValidator>();
@@ -26,6 +27,9 @@ namespace Velocity_Rent.Dependency_Injection
             services.AddTransient<IValidator<ChangePasswordDto>, ChangePasswordDtoValidator>();
 
             services.AddTransient<frmLogin>();
+            services.AddTransient<frmMain>();
+
+            services.AddSingleton<IRememberMeService, RememberMeService>();
 
             return services.BuildServiceProvider();
         }

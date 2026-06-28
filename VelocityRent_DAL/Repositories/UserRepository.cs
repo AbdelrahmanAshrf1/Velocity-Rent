@@ -9,7 +9,7 @@ using VelocityRent_Utilities;
 
 namespace Velocity_Rent_DAL.Repositories
 {
-    public class UserRepository : IUserRepositroy
+    public class UserRepository : IUserRepository
     {
         public int Add(User user)
         {

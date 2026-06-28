@@ -11,6 +11,6 @@
         Data = data;
     }
 
-    public static Result<T> Successfully(T data) => new Result<T>(true, string.Empty, data);
+    public static Result<T> Successful(T data) => new Result<T>(true, string.Empty, data);
     public static Result<T> Failure(string message) => new Result<T>(false, message, null);
 }

@@ -6,21 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
+using VelocityRent_DLL.Interfaces;
 using VelocityRent_DLL.Mappers;
 using VelocityRent_Utilities;
 
 namespace VelocityRent_DLL.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly IUserRepositroy _repo;
+        private readonly IUserRepository _repo;
         private readonly IValidator<LoginDto> _loginDtoValidator;
         private readonly IValidator<AddUserDto> _addUserDtoValidator; 
         private readonly IValidator<UpdateUserDto> _updateUserDtoValidator; 
         private readonly IValidator<ChangePasswordDto> _changePasswordDtoValidator; 
 
         public UserService(
-            IUserRepositroy repo,
+            IUserRepository repo,
             IValidator<LoginDto> loginDtoValidator,
             IValidator<AddUserDto> addUserDtoValidator,
             IValidator<UpdateUserDto> updateUserDtoValidator,
@@ -95,7 +96,6 @@ namespace VelocityRent_DLL.Services
 
             return users.Select(UserMapper.ToDto).ToList();
         }
-        public bool UpdateLastLogin(int id) => _repo.UpdateLastLogin(id);
         private void LogValidationErrors(FluentValidation.Results.ValidationResult result)
         {
             Logger.Error(string.Join(Environment.NewLine, result.Errors.Select(x => x.ErrorMessage)));
@@ -115,13 +115,13 @@ namespace VelocityRent_DLL.Services
             if (!validationResult.IsValid)
             {
                 LogValidationErrors(validationResult);
-                return Result<UserDto>.Failed("Invalid login data.");
+                return Result<UserDto>.Failure("Invalid login data.");
             }
 
             User user = Authenticate(dto.Username, dto.Password);
 
-            if (user == null) return Result<UserDto>.Failed("Invalid username or password.");
-            if (!user.IsActive) return Result<UserDto>.Failed("Your account is disabled.");
+            if (user == null) return Result<UserDto>.Failure("Invalid username or password.");
+            if (!user.IsActive) return Result<UserDto>.Failure("Your account is disabled.");
 
             _repo.UpdateLastLogin(user.ID);
 

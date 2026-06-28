@@ -1,10 +1,11 @@
 ﻿using DTO.User;
 using Guna.UI2.WinForms;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Velocity_Rent.Session;
-using VelocityRent_DLL.Services;
+using VelocityRent_DLL.Interfaces;
 
 namespace Velocity_Rent.Login_Form
 {
@@ -13,11 +14,18 @@ namespace Velocity_Rent.Login_Form
         private const string LinkedInURL = "https://www.linkedin.com/in/abdulrhman-ashraf-71bb68254/";
         private const string InvalidLoginMessage = "Invalid username or password.";
 
-        private readonly UserService _userService;
-        public frmLogin(UserService userService)
+        private readonly IUserService _userService;
+        private readonly IServiceProvider _provider;
+        private readonly IRememberMeService _rememberMeService;
+        public frmLogin(
+            IUserService userService,
+            IServiceProvider provider,
+            IRememberMeService rememberMeService)
         {
             InitializeComponent();
-            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            _userService = userService;
+            _provider = provider;
+            _rememberMeService = rememberMeService;
         }
 
         private void lblContactUs_Click(object sender, EventArgs e)
@@ -41,7 +49,7 @@ namespace Velocity_Rent.Login_Form
         private void OpenMainForm(UserDto user)
         {
             CurrentSession.CurrentUser = user;
-            frmMain frm = new frmMain();
+            var frm = _provider.GetRequiredService<frmMain>();
             frm.FormClosed += (s, e) => Close();
             frm.Show();
             Hide();
@@ -56,9 +64,16 @@ namespace Velocity_Rent.Login_Form
             };
         }
 
+        private void HandleRememberMe(UserDto dto)
+        {
+            if (chkRemmberMe.Checked)
+                _rememberMeService.Save(dto.Username);
+            else
+                _rememberMeService.Clear();
+        }
         private void Login()
         {
-            if (ValidateChildren())
+            if (!ValidateChildren())
             {
                 MessageBox.Show("Invalid login data.");
                 return;
@@ -74,6 +89,7 @@ namespace Velocity_Rent.Login_Form
                 return;
             }
 
+            HandleRememberMe(result.Data);
             OpenMainForm(result.Data);
         }
 
@@ -89,5 +105,15 @@ namespace Velocity_Rent.Login_Form
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e) => e.Cancel = !ValidateRequiredTextBox(txtUsername, "Username is required");
         private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e) => e.Cancel = !ValidateRequiredTextBox(txtPassword, "Password is required");
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            string username = _rememberMeService.Load();
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                txtUsername.Text = username;
+                chkRemmberMe.Checked = true;
+            }
+        }
     }
 }

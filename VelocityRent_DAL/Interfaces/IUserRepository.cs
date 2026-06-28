@@ -3,7 +3,7 @@ using VelocityRent.Entities;
 
 namespace Velocity_Rent_DAL.Interfaces
 {
-    public interface IUserRepositroy
+    public interface IUserRepository
     {
         int Add(User user);
         bool Exists(int id);

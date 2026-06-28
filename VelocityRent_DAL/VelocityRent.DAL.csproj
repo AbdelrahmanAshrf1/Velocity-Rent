@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAddressRepository.cs" />
-    <Compile Include="Interfaces\IUserRepositroy.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Interfaces\IPersonRepositroy.cs" />
     <Compile Include="Interfaces\ISystemSettingRepository.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />

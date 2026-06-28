@@ -1,9 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VelocityRent_Utilities
 {
@@ -44,11 +40,11 @@ namespace VelocityRent_Utilities
                 return defaultValue;
             }
         }
-        public static void DeleteValue(string subKey,string valueName)
+        public static void DeleteValue(string subKey, string valueName)
         {
             try
             {
-                using(RegistryKey key = Registry.CurrentUser.OpenSubKey($"{BasePath}\\{subKey}"))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey($"{BasePath}\\{subKey}",writable: true))
                 {
                     key?.DeleteValue(valueName, false);
                 }
@@ -71,12 +67,12 @@ namespace VelocityRent_Utilities
         }
         public static bool IsKeyExists(string subKey)
         {
-            using(RegistryKey key = Registry.CurrentUser.OpenSubKey($"{BasePath}\\{subKey}"))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey($"{BasePath}\\{subKey}"))
             {
                 return key != null;
             }
         }
-        public static bool IsValueExists(string subKey,string valueName)
+        public static bool IsValueExists(string subKey, string valueName)
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey($"{BasePath}\\{subKey}"))
             {
