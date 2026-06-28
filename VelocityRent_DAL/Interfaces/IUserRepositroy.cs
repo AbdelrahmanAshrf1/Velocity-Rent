@@ -13,5 +13,7 @@ namespace Velocity_Rent_DAL.Interfaces
         List<User> GetAll();
         bool ChangePassword(int id, string PasswordHash);
         bool UpdateLastLogin(int id);
+        bool SetActive(int id, bool isActive);
+        User GetByUsername(string username);
     }
 }

@@ -42,7 +42,7 @@
             this.guna2DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnViewLinkedinProfile = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnLogin = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.chkRemmberMe = new Guna.UI2.WinForms.Guna2CheckBox();
             this.lblContactUs = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -167,7 +167,7 @@
             this.txtUsername.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtUsername.TabIndex = 8;
             this.txtUsername.TextOffset = new System.Drawing.Point(10, 0);
-            this.txtUsername.Validated += new System.EventHandler(this.txtUsername_Validated);
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // guna2DragControl
             // 
@@ -216,27 +216,27 @@
             this.txtPassword.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPassword.TabIndex = 10;
             this.txtPassword.TextOffset = new System.Drawing.Point(10, 0);
-            this.txtPassword.Validated += new System.EventHandler(this.txtPassword_Validated);
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
-            // btnViewLinkedinProfile
+            // btnLogin
             // 
-            this.btnViewLinkedinProfile.BorderRadius = 10;
-            this.btnViewLinkedinProfile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnViewLinkedinProfile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnViewLinkedinProfile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnViewLinkedinProfile.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnViewLinkedinProfile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnViewLinkedinProfile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.btnViewLinkedinProfile.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.btnViewLinkedinProfile.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnViewLinkedinProfile.ForeColor = System.Drawing.Color.White;
-            this.btnViewLinkedinProfile.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnViewLinkedinProfile.Location = new System.Drawing.Point(535, 413);
-            this.btnViewLinkedinProfile.Name = "btnViewLinkedinProfile";
-            this.btnViewLinkedinProfile.Size = new System.Drawing.Size(160, 37);
-            this.btnViewLinkedinProfile.TabIndex = 18;
-            this.btnViewLinkedinProfile.Text = "R E G I S T E R";
-            this.btnViewLinkedinProfile.Click += new System.EventHandler(this.btnViewLinkedinProfile_Click);
+            this.btnLogin.BorderRadius = 10;
+            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogin.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnLogin.Location = new System.Drawing.Point(535, 413);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(160, 37);
+            this.btnLogin.TabIndex = 18;
+            this.btnLogin.Text = "R E G I S T E R";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // chkRemmberMe
             // 
@@ -283,7 +283,7 @@
             this.ClientSize = new System.Drawing.Size(950, 548);
             this.Controls.Add(this.lblContactUs);
             this.Controls.Add(this.chkRemmberMe);
-            this.Controls.Add(this.btnViewLinkedinProfile);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.txtUsername);
@@ -322,7 +322,7 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2CheckBox chkRemmberMe;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnViewLinkedinProfile;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnLogin;
         private System.Windows.Forms.Label lblContactUs;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }

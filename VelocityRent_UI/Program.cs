@@ -1,8 +1,12 @@
-﻿using AutoMapper;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
+using Velocity_Rent.Dependency_Injection;
 using Velocity_Rent.Login_Form;
-using VelocityRent_DLL.Mappings;
+using Velocity_Rent_DAL.Interfaces;
+using Velocity_Rent_DAL.Repositories;
+using VelocityRent.Validators.Validators.User;
+using VelocityRent_DLL.Services;
 
 
 namespace Velocity_Rent
@@ -15,11 +19,13 @@ namespace Velocity_Rent
         [STAThread]
         static void Main()
         {
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MappingService.Configure();
-            Application.Run(new frmMain());
-            //Application.Run(new frmLogin());
+
+            var provider = DependencyInjection.Configure();
+
+            Application.Run(provider.GetRequiredService<frmLogin>());
         }
     }
 }

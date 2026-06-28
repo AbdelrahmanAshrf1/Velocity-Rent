@@ -82,6 +82,41 @@ namespace Velocity_Rent_DAL.Repositories
                 return null;
             }
         }
+        public User GetByUsername(string username)
+        {
+            try
+            {
+                string query = @"SELECT
+                                    UserID,
+                                    PersonID,
+                                    Username,
+                                    PasswordHash,
+                                    UserRole,
+                                    LastLogin,
+                                    CreatedDate,
+                                    IsActive
+                                FROM Users
+                                WHERE Username = @Username;";
+
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (!reader.Read()) return null;
+                        return MapUser(reader);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                return null;
+            }
+        }
         public bool Exists(int id)
         {
             try
@@ -248,6 +283,31 @@ namespace Velocity_Rent_DAL.Repositories
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@CurrentDateTime", SqlDbType.DateTime).Value = DateTime.Now;
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+                    connection.Open();
+                    return command.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                return false;
+            }
+        }
+        public bool SetActive(int id,bool isActive)
+        {
+            try
+            {
+                string query = @"
+                                 UPDATE Users
+                                        SET IsActive = @IsActive
+                                        WHERE UserID = @ID";
+
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = isActive;
                     command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
                     connection.Open();

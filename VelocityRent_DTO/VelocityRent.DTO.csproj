@@ -112,6 +112,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\AddUserDto.cs" />
     <Compile Include="User\ChangePasswordDto.cs" />
+    <Compile Include="User\LoginDto.cs" />
+    <Compile Include="User\LoginResult.cs" />
     <Compile Include="User\UpdateUserDto.cs" />
     <Compile Include="User\UserDto.cs" />
   </ItemGroup>

@@ -57,6 +57,7 @@
     <Compile Include="Validators\Person\UpdatePersonDtoValidator.cs" />
     <Compile Include="Validators\User\AddUserDtoValidator.cs" />
     <Compile Include="Validators\User\ChangePasswordDtoValidator.cs" />
+    <Compile Include="Validators\User\LoginDtoValidator.cs" />
     <Compile Include="Validators\User\UpdateUserDtoValidator.cs" />
   </ItemGroup>
   <ItemGroup>

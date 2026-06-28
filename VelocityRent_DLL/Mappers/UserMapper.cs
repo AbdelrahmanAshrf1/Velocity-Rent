@@ -29,11 +29,5 @@ namespace VelocityRent_DLL.Mappers
                 CreateDate = user.CreateDate,
             };
         }
-        public static void UpdateEntity(UpdateUserDto dto, User user)
-        {
-            user.ChangeRole(dto.UserRole);
-            user.ChangeUsername(dto.Username);
-            user.SetActive(dto.IsActive);
-        }
     }
 }

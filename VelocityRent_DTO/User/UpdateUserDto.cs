@@ -7,6 +7,5 @@ namespace DTO.User
         public int Id { get; set; }
         public string Username { get; set; }
         public enUserRole UserRole { get; set; }
-        public bool IsActive { get; set; }
     }
 }

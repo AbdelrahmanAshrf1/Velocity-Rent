@@ -42,11 +42,14 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>packages\FluentValidation.11.10.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.10.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.10.0.9\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
@@ -54,8 +57,11 @@
     <Reference Include="Microsoft.Bcl.TimeProvider, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.TimeProvider.8.0.1\lib\net462\Microsoft.Bcl.TimeProvider.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.10.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=10.0.0.9, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.10.0.9\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=10.0.0.9, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.10.0.9\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.10.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
@@ -153,16 +159,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bookings\frmBookings.cs">
+    <Compile Include="Dependency Injection\DependencyInjection.cs" />
+    <Compile Include="Forms\Bookings\frmBookings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bookings\frmBookings.Designer.cs">
+    <Compile Include="Forms\Bookings\frmBookings.Designer.cs">
       <DependentUpon>frmBookings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\frmCustomers.cs">
+    <Compile Include="Forms\Customers\frmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\frmCustomers.Designer.cs">
+    <Compile Include="Forms\Customers\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="Login Form\frmLogin.cs">
@@ -171,52 +178,52 @@
     <Compile Include="Login Form\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Form\Controls\usSidebar.cs">
+    <Compile Include="Forms\Main Form\Controls\usSidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main Form\Controls\usSidebar.Designer.cs">
+    <Compile Include="Forms\Main Form\Controls\usSidebar.Designer.cs">
       <DependentUpon>usSidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Form\frmMain.cs">
+    <Compile Include="Forms\Main Form\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main Form\frmMain.Designer.cs">
+    <Compile Include="Forms\Main Form\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home\frmHome.cs">
+    <Compile Include="Forms\Home\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home\frmHome.Designer.cs">
+    <Compile Include="Forms\Home\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maintenance\frmMaintenance.cs">
+    <Compile Include="Forms\Maintenance\frmMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maintenance\frmMaintenance.Designer.cs">
+    <Compile Include="Forms\Maintenance\frmMaintenance.Designer.cs">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\Controls\SuggestionGroup.cs" />
-    <Compile Include="Map\Controls\SuggestionStorage.cs" />
-    <Compile Include="Map\Controls\ucSuggestionItem.cs">
+    <Compile Include="Forms\Map\Controls\SuggestionGroup.cs" />
+    <Compile Include="Forms\Map\Controls\SuggestionStorage.cs" />
+    <Compile Include="Forms\Map\Controls\ucSuggestionItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Map\Controls\ucSuggestionItem.Designer.cs">
+    <Compile Include="Forms\Map\Controls\ucSuggestionItem.Designer.cs">
       <DependentUpon>ucSuggestionItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\Controls\ucSuggestionsList.cs">
+    <Compile Include="Forms\Map\Controls\ucSuggestionsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Map\Controls\ucSuggestionsList.Designer.cs">
+    <Compile Include="Forms\Map\Controls\ucSuggestionsList.Designer.cs">
       <DependentUpon>ucSuggestionsList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\Controls\ucMapWithSearch.cs">
+    <Compile Include="Forms\Map\Controls\ucMapWithSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Map\Controls\ucMapWithSearch.Designer.cs">
+    <Compile Include="Forms\Map\Controls\ucMapWithSearch.Designer.cs">
       <DependentUpon>ucMapWithSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\Services\Interfaces\IMapService.cs" />
-    <Compile Include="Map\Services\MapboxService.cs" />
+    <Compile Include="Forms\Map\Services\Interfaces\IMapService.cs" />
+    <Compile Include="Forms\Map\Services\MapboxService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -224,58 +231,59 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings\frmSettings.cs">
+    <Compile Include="Session\CurrentSession.cs" />
+    <Compile Include="Forms\Settings\frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\frmSettings.Designer.cs">
+    <Compile Include="Forms\Settings\frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setup Wizard\frmSetupWizard.cs">
+    <Compile Include="Forms\Setup Wizard\frmSetupWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setup Wizard\frmSetupWizard.Designer.cs">
+    <Compile Include="Forms\Setup Wizard\frmSetupWizard.Designer.cs">
       <DependentUpon>frmSetupWizard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\frmUsers.cs">
+    <Compile Include="Forms\Users\frmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\frmUsers.Designer.cs">
+    <Compile Include="Forms\Users\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vehicles\frmVehicles.cs">
+    <Compile Include="Forms\Vehicles\frmVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vehicles\frmVehicles.Designer.cs">
+    <Compile Include="Forms\Vehicles\frmVehicles.Designer.cs">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bookings\frmBookings.resx">
+    <EmbeddedResource Include="Forms\Bookings\frmBookings.resx">
       <DependentUpon>frmBookings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\frmCustomers.resx">
+    <EmbeddedResource Include="Forms\Customers\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Form\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main Form\Controls\usSidebar.resx">
+    <EmbeddedResource Include="Forms\Main Form\Controls\usSidebar.resx">
       <DependentUpon>usSidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main Form\frmMain.resx">
+    <EmbeddedResource Include="Forms\Main Form\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home\frmHome.resx">
+    <EmbeddedResource Include="Forms\Home\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maintenance\frmMaintenance.resx">
+    <EmbeddedResource Include="Forms\Maintenance\frmMaintenance.resx">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\Controls\ucSuggestionItem.resx">
+    <EmbeddedResource Include="Forms\Map\Controls\ucSuggestionItem.resx">
       <DependentUpon>ucSuggestionItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\Controls\ucSuggestionsList.resx">
+    <EmbeddedResource Include="Forms\Map\Controls\ucSuggestionsList.resx">
       <DependentUpon>ucSuggestionsList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\Controls\ucMapWithSearch.resx">
+    <EmbeddedResource Include="Forms\Map\Controls\ucMapWithSearch.resx">
       <DependentUpon>ucMapWithSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -283,16 +291,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\frmSettings.resx">
+    <EmbeddedResource Include="Forms\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup Wizard\frmSetupWizard.resx">
+    <EmbeddedResource Include="Forms\Setup Wizard\frmSetupWizard.resx">
       <DependentUpon>frmSetupWizard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\frmUsers.resx">
+    <EmbeddedResource Include="Forms\Users\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vehicles\frmVehicles.resx">
+    <EmbeddedResource Include="Forms\Vehicles\frmVehicles.resx">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -310,92 +318,100 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Bookings_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Bookings_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Bookings2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Bookings2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Car_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Car_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Car2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Car2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Customers_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Customers_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Customers2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Customers2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\home.png" />
+    <None Include="Forms\Resources\Images\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Home2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Home2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Maintenance_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Maintenance_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Maintenance2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Maintenance2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Search.png" />
+    <None Include="Forms\Resources\Images\Search.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Settings_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Settings_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Settings2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Settings2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\User_Sidebar.png" />
+    <None Include="Forms\Resources\Images\User_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Users2_Sidebar.png" />
+    <None Include="Forms\Resources\Images\Users2_Sidebar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Mark_Location.png" />
+    <None Include="Forms\Resources\Images\Mark_Location.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\car_tpp.png" />
+    <None Include="Forms\Resources\Images\car_tpp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\heart_filled.png" />
+    <None Include="Forms\Resources\heart_filled.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\heart_outLine.png" />
+    <None Include="Forms\Resources\heart_outLine.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\compass.png" />
+    <None Include="Forms\Resources\compass.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plus.png" />
+    <None Include="Forms\Resources\plus.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\minus.png" />
+    <None Include="Forms\Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Map\Services\WebFiles\map.css">
+    <Content Include="Forms\Map\Services\WebFiles\map.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Map\Services\WebFiles\map.html">
+    <Content Include="Forms\Map\Services\WebFiles\map.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Map\Services\WebFiles\map.js">
+    <Content Include="Forms\Map\Services\WebFiles\map.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Images\ChatGPT_Image_Dec_29__2025__09_17_20_AM-Photoroom-removebg-preview.png" />
-    <None Include="Resources\Images\user.png" />
-    <None Include="Resources\Images\plus.png" />
-    <None Include="Resources\Images\minus.png" />
-    <None Include="Resources\Images\Location.png" />
-    <None Include="Resources\Images\heart_outLine.png" />
-    <None Include="Resources\Images\heart_filled.png" />
-    <None Include="Resources\Images\CurrentLocation.png" />
-    <None Include="Resources\Images\compass.png" />
+    <None Include="Forms\Resources\Images\ChatGPT_Image_Dec_29__2025__09_17_20_AM-Photoroom-removebg-preview.png" />
+    <None Include="Forms\Resources\Images\user.png" />
+    <None Include="Forms\Resources\Images\plus.png" />
+    <None Include="Forms\Resources\Images\minus.png" />
+    <None Include="Forms\Resources\Images\Location.png" />
+    <None Include="Forms\Resources\Images\heart_outLine.png" />
+    <None Include="Forms\Resources\Images\heart_filled.png" />
+    <None Include="Forms\Resources\Images\CurrentLocation.png" />
+    <None Include="Forms\Resources\Images\compass.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VelocityRent.Validators\VelocityRent.Validators.csproj">
+      <Project>{DCDBA3EE-C1E1-45C5-883D-528CE005B89F}</Project>
+      <Name>VelocityRent.Validators</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VelocityRent_DAL\VelocityRent.DAL.csproj">
+      <Project>{C5FD3F40-01D4-4C9D-A5F1-3E0418029A32}</Project>
+      <Name>VelocityRent.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VelocityRent_DLL\VelocityRent.BLL.csproj">
       <Project>{802fef5e-4e7e-43e7-9429-dc56130c5f09}</Project>
       <Name>VelocityRent.BLL</Name>
@@ -405,6 +421,7 @@
       <Name>VelocityRent.DTO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
