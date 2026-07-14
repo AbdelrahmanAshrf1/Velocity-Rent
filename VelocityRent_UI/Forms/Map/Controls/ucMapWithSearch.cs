@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using DTO.Address;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,18 +17,44 @@ namespace Velocity_Rent.Map.Controls
 {
     public partial class ucMapWithSearch : UserControl
     {
+        private static readonly HttpClient _httpClient = CreateHttpClient();
         private IMapService _mapService;
+        public event Action<AddAddressDto> OnAddressSelected;
         public ucMapWithSearch()
         {
             InitializeComponent();
             SetupSuggestionList();
         }
+
+        private static HttpClient CreateHttpClient()
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0)");
+            client.DefaultRequestHeaders.Add("Accept-Language", "en");
+            return client;
+        }
+
         public class NominatimResult
         {
             public string display_name { get; set; }
             public string lat { get; set; }
             public string lon { get; set; }
         }
+        public class NominatimAddress
+        {
+            public string city { get; set; }
+            public string town { get; set; }
+            public string village { get; set; }
+            public string state { get; set; }
+            public string postcode { get; set; }
+            public string country { get; set; }
+        }
+        public class NominatimReverseResult
+        {
+            public string display_name { get; set; }
+            public NominatimAddress address { get; set; }
+        }
+
         private SuggestionItem ToSuggestion(NominatimResult r)
         {
             return new SuggestionItem
@@ -39,17 +66,18 @@ namespace Velocity_Rent.Map.Controls
                 Lon = double.TryParse(r.lon, out var lo) ? lo : (double?)null
             };
         }
-
         private void SetupSuggestionList()
         {
-            suggestionList.OnSuggestionSelected += (item) =>
+            suggestionList.OnSuggestionSelected += async (item) =>
             {
                 txtSearchBox.Text = item.Title;
-
-                if (item.Lat.HasValue && item.Lon.HasValue)
-                    _mapService.MoveToAsync(item.Lat.Value, item.Lon.Value);
-
                 suggestionList.Visible = false;
+
+                if (!item.Lat.HasValue || !item.Lon.HasValue) return;
+
+                await _mapService.MoveToAsync(item.Lat.Value, item.Lon.Value);
+                await ResolveAndRaiseAddressAsync(item.Lat.Value, item.Lon.Value);
+
             };
         }
 
@@ -58,7 +86,10 @@ namespace Velocity_Rent.Map.Controls
             string query = txtSearchBox.Text;
 
             if (string.IsNullOrWhiteSpace(query))
+            {
                 LoadFavoritesAndRecent();
+                return;
+            }
 
             if (query.Length < 2)
             {
@@ -70,14 +101,14 @@ namespace Velocity_Rent.Map.Controls
         }
         private void LoadFavoritesAndRecent()
         {
-            var Groups = new List<SuggestionGroup>()
+            var groups = new List<SuggestionGroup>()
             {
-                CreateGroup("⭐ Favorites",SuggestionStorage.LoadFavorites()),
-                CreateGroup("🕒 Recent",SuggestionStorage.LoadHistory()),
+                CreateGroup("⭐ Favorites", SuggestionStorage.LoadFavorites()),
+                CreateGroup("🕒 Recent", SuggestionStorage.LoadHistory())
             }.Where(group => group.Items.Any()).ToList();
 
-            if (Groups.Any())
-                suggestionList.LoadSuggestionsGrouped(Groups);
+            if (groups.Any())
+                suggestionList.LoadSuggestionsGrouped(groups);
             else
                 suggestionList.Visible = false;
         }
@@ -91,14 +122,9 @@ namespace Velocity_Rent.Map.Controls
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0)");
-                    client.DefaultRequestHeaders.Add("Accept-Language", "en");
-
                     string url = $"https://nominatim.openstreetmap.org/search?q={Uri.EscapeDataString(query)}&format=json&limit=7";
-
                     string json = await client.GetStringAsync(url);
                     var results = JsonConvert.DeserializeObject<List<NominatimResult>>(json);
-
                     var items = results.Select(ToSuggestion).ToList();
 
                     var groups = new List<SuggestionGroup>
@@ -121,29 +147,88 @@ namespace Velocity_Rent.Map.Controls
         {
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    string json = await client.GetStringAsync("https://ipinfo.io/json");
+                string json = await _httpClient.GetStringAsync("https://ipinfo.io/json");
 
-                    dynamic info = JsonConvert.DeserializeObject(json);
-                    string loc = info.loc;
+                dynamic info = JsonConvert.DeserializeObject(json);
+                string loc = info.loc;
 
-                    string[] parts = loc.Split(',');
-                    double lat = double.Parse(parts[0]);
-                    double lon = double.Parse(parts[1]);
+                string[] parts = loc.Split(',');
+                double lat = double.Parse(parts[0], CultureInfo.InvariantCulture);
+                double lon = double.Parse(parts[1], CultureInfo.InvariantCulture);
 
-                    _mapService.MoveToAsync(lat, lon);
-                }
+                await _mapService.MoveToAsync(lat, lon);
+                await ResolveAndRaiseAddressAsync(lat, lon);
             }
             catch
             {
                 MessageBox.Show("Unable to detect current location.");
             }
         }
+
+        private async Task ResolveAndRaiseAddressAsync(double lat, double lon)
+        {
+            var dto = await ReverseGeocodeAsync(lat, lon);
+            OnAddressSelected?.Invoke(dto);
+        }
+
+        private async Task<AddAddressDto> ReverseGeocodeAsync(double lat, double lon)
+        {
+            try
+            {
+                string url = $"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&addressdetails=1";
+                string json = await _httpClient.GetStringAsync(url);
+                var result = JsonConvert.DeserializeObject<NominatimReverseResult>(json);
+                var addr = result?.address ?? new NominatimAddress();
+
+                return new AddAddressDto
+                {
+                    City = addr.city ?? addr.town ?? addr.village ?? string.Empty,
+                    State = addr.state ?? string.Empty,
+                    ZipCode = addr.postcode ?? string.Empty,
+                    Country = addr.country ?? string.Empty,
+                    Latitude = (decimal)lat,
+                    Longitude = (decimal)lon
+                };
+            }
+            catch
+            {
+                return new AddAddressDto
+                {
+                    Latitude = (decimal)lat,
+                    Longitude = (decimal)lon
+                };
+            }
+        }
+        private bool IsInDesignMode()
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return true;
+
+            if (this.DesignMode)
+                return true;
+
+            if (this.Site != null && this.Site.DesignMode)
+                return true;
+
+            if (Process.GetCurrentProcess().ProcessName.Equals("devenv", StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            return false;
+        }
         private async void ucMapWithSearch_Load(object sender, EventArgs e)
         {
-            _mapService = new MapboxService();
-            await _mapService.InitializeAsync(webView21);
+            if (IsInDesignMode()) return;
+
+            try
+            {
+                _mapService = new MapboxService();
+                await _mapService.InitializeAsync(webView21);
+            }
+            catch (Exception ex)
+            {
+                // Never let this bubble up as unhandled — especially not inside a designer host.
+                System.Diagnostics.Debug.WriteLine($"Map init failed: {ex}");
+            }
         }
     }
    }

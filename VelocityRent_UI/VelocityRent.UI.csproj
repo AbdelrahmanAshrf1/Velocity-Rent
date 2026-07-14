@@ -160,6 +160,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependency Injection\DependencyInjection.cs" />
+    <Compile Include="Forms\Address\frmAddAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Address\frmAddAddress.Designer.cs">
+      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Bookings\frmBookings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,18 @@
     </Compile>
     <Compile Include="Forms\Customers\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Map\Forms\frmMapPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Map\Forms\frmMapPicker.Designer.cs">
+      <DependentUpon>frmMapPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\frmAddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\frmAddNewUser.Designer.cs">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Login Form\frmLogin.cs">
       <SubType>Form</SubType>
@@ -256,11 +274,20 @@
     <Compile Include="Forms\Vehicles\frmVehicles.Designer.cs">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Address\frmAddAddress.resx">
+      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Bookings\frmBookings.resx">
       <DependentUpon>frmBookings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Map\Forms\frmMapPicker.resx">
+      <DependentUpon>frmMapPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\frmAddNewUser.resx">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Form\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

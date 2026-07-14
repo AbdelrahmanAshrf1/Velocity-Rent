@@ -8,7 +8,7 @@ namespace VelocityRent_DLL.Mappers
     {
         public static Person ToEntity(AddPersonDto dto)
         {
-            return new User(
+            return new Person(
                 firstName: dto.FirstName,
                 lastName: dto.LastName,
                 email: dto.Email,

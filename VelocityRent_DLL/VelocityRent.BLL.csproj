@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\RolePermissionManager.cs" />
     <Compile Include="Interfaces\IRememberMeService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Mappers\AddressMapper.cs" />

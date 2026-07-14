@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Velocity_Rent.Map.Controls;
+﻿using System.Collections.Generic;
+
 using static Velocity_Rent.Map.Controls.ucSuggestionItem;
 
 namespace Velocity_Rent.Map

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSuggestionItem));
             this.pnlContainer = new SATAUiFramework.SATAPanel();
             this.pbFavorite = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lblSubtitle = new System.Windows.Forms.Label();
@@ -63,7 +64,7 @@
             // 
             this.pbFavorite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbFavorite.BackColor = System.Drawing.Color.Transparent;
-            this.pbFavorite.Image = global::Velocity_Rent.Properties.Resources.heart_outLine;
+            this.pbFavorite.Image = ((System.Drawing.Image)(resources.GetObject("pbFavorite.Image")));
             this.pbFavorite.ImageRotate = 0F;
             this.pbFavorite.Location = new System.Drawing.Point(294, 17);
             this.pbFavorite.Name = "pbFavorite";

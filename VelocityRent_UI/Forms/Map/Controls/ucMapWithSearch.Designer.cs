@@ -34,20 +34,20 @@ namespace Velocity_Rent.Map.Controls
             SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMapWithSearch));
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
+            this.gbSuggestionList = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.suggestionList = new Velocity_Rent.Map.Controls.ucSuggestionsList();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.txtSearchBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLocation = new System.Windows.Forms.Label();
             this.gbMapContainer = new Guna.UI2.WinForms.Guna2GroupBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.guna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.txtSearchBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.gbSuggestionList = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.suggestionList = new Velocity_Rent.Map.Controls.ucSuggestionsList();
             this.sataPanel1.SuspendLayout();
+            this.gbSuggestionList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMapContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.gbSuggestionList.SuspendLayout();
             this.SuspendLayout();
             // 
             // sataPanel1
@@ -70,47 +70,30 @@ namespace Velocity_Rent.Map.Controls
             resources.ApplyResources(this.sataPanel1, "sataPanel1");
             this.sataPanel1.Name = "sataPanel1";
             // 
+            // gbSuggestionList
+            // 
+            resources.ApplyResources(this.gbSuggestionList, "gbSuggestionList");
+            this.gbSuggestionList.BorderColor = System.Drawing.Color.Transparent;
+            this.gbSuggestionList.BorderRadius = 20;
+            this.gbSuggestionList.Controls.Add(this.suggestionList);
+            this.gbSuggestionList.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.gbSuggestionList.CustomBorderThickness = new System.Windows.Forms.Padding(0);
+            this.gbSuggestionList.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.gbSuggestionList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gbSuggestionList.Name = "gbSuggestionList";
+            // 
+            // suggestionList
+            // 
+            resources.ApplyResources(this.suggestionList, "suggestionList");
+            this.suggestionList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(32)))));
+            this.suggestionList.Name = "suggestionList";
+            // 
             // guna2Separator1
             // 
             resources.ApplyResources(this.guna2Separator1, "guna2Separator1");
             this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
             this.guna2Separator1.Name = "guna2Separator1";
-            // 
-            // lblLocation
-            // 
-            resources.ApplyResources(this.lblLocation, "lblLocation");
-            this.lblLocation.BackColor = System.Drawing.Color.Transparent;
-            this.lblLocation.ForeColor = System.Drawing.Color.White;
-            this.lblLocation.Name = "lblLocation";
-            // 
-            // gbMapContainer
-            // 
-            resources.ApplyResources(this.gbMapContainer, "gbMapContainer");
-            this.gbMapContainer.BackColor = System.Drawing.Color.Transparent;
-            this.gbMapContainer.BorderColor = System.Drawing.Color.Transparent;
-            this.gbMapContainer.BorderRadius = 20;
-            this.gbMapContainer.BorderThickness = 3;
-            this.gbMapContainer.Controls.Add(this.webView21);
-            this.gbMapContainer.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.gbMapContainer.CustomBorderThickness = new System.Windows.Forms.Padding(1);
-            this.gbMapContainer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gbMapContainer.Name = "gbMapContainer";
-            // 
-            // webView21
-            // 
-            this.webView21.AllowExternalDrop = true;
-            this.webView21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.webView21.CreationProperties = null;
-            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.webView21, "webView21");
-            this.webView21.Name = "webView21";
-            this.webView21.ZoomFactor = 1D;
-            // 
-            // guna2Elipse
-            // 
-            this.guna2Elipse.BorderRadius = 30;
-            this.guna2Elipse.TargetControl = this.webView21;
             // 
             // txtSearchBox
             // 
@@ -154,23 +137,40 @@ namespace Velocity_Rent.Map.Controls
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // gbSuggestionList
+            // lblLocation
             // 
-            resources.ApplyResources(this.gbSuggestionList, "gbSuggestionList");
-            this.gbSuggestionList.BorderColor = System.Drawing.Color.Transparent;
-            this.gbSuggestionList.BorderRadius = 20;
-            this.gbSuggestionList.Controls.Add(this.suggestionList);
-            this.gbSuggestionList.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.gbSuggestionList.CustomBorderThickness = new System.Windows.Forms.Padding(0);
-            this.gbSuggestionList.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.gbSuggestionList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gbSuggestionList.Name = "gbSuggestionList";
+            resources.ApplyResources(this.lblLocation, "lblLocation");
+            this.lblLocation.BackColor = System.Drawing.Color.Transparent;
+            this.lblLocation.ForeColor = System.Drawing.Color.White;
+            this.lblLocation.Name = "lblLocation";
             // 
-            // suggestionList
+            // gbMapContainer
             // 
-            resources.ApplyResources(this.suggestionList, "suggestionList");
-            this.suggestionList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(32)))));
-            this.suggestionList.Name = "suggestionList";
+            resources.ApplyResources(this.gbMapContainer, "gbMapContainer");
+            this.gbMapContainer.BackColor = System.Drawing.Color.Transparent;
+            this.gbMapContainer.BorderColor = System.Drawing.Color.Transparent;
+            this.gbMapContainer.BorderRadius = 20;
+            this.gbMapContainer.BorderThickness = 3;
+            this.gbMapContainer.Controls.Add(this.webView21);
+            this.gbMapContainer.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.gbMapContainer.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.gbMapContainer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gbMapContainer.Name = "gbMapContainer";
+            // 
+            // webView21
+            // 
+            this.webView21.AllowExternalDrop = true;
+            this.webView21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.webView21, "webView21");
+            this.webView21.Name = "webView21";
+            this.webView21.ZoomFactor = 1D;
+            // 
+            // guna2Elipse
+            // 
+            this.guna2Elipse.BorderRadius = 30;
+            this.guna2Elipse.TargetControl = this.webView21;
             // 
             // ucMapWithSearch
             // 
@@ -183,10 +183,10 @@ namespace Velocity_Rent.Map.Controls
             this.Load += new System.EventHandler(this.ucMapWithSearch_Load);
             this.sataPanel1.ResumeLayout(false);
             this.sataPanel1.PerformLayout();
+            this.gbSuggestionList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbMapContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.gbSuggestionList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
