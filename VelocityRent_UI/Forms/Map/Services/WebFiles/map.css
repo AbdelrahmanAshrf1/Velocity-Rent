@@ -3,10 +3,26 @@
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow:hidden;
     background: #020617;
 }
 
 #map {
     width: 100%;
     height: 100%;
+}
+.select-address-btn {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px 20px;
+    background: #f97316;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
 }

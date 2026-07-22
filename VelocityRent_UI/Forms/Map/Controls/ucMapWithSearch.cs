@@ -76,8 +76,6 @@ namespace Velocity_Rent.Map.Controls
                 if (!item.Lat.HasValue || !item.Lon.HasValue) return;
 
                 await _mapService.MoveToAsync(item.Lat.Value, item.Lon.Value);
-                await ResolveAndRaiseAddressAsync(item.Lat.Value, item.Lon.Value);
-
             };
         }
 
@@ -120,24 +118,25 @@ namespace Velocity_Rent.Map.Controls
         {
             try
             {
-                using (HttpClient client = new HttpClient())
+                string url = $"https://nominatim.openstreetmap.org/search?q={Uri.EscapeDataString(query)}&format=json&limit=7";
+                string json = await _httpClient.GetStringAsync(url);
+                var results = JsonConvert.DeserializeObject<List<NominatimResult>>(json) ?? new List<NominatimResult>();
+                var items = results.Select(ToSuggestion).ToList();
+
+                var groups = new List<SuggestionGroup>
                 {
-                    string url = $"https://nominatim.openstreetmap.org/search?q={Uri.EscapeDataString(query)}&format=json&limit=7";
-                    string json = await client.GetStringAsync(url);
-                    var results = JsonConvert.DeserializeObject<List<NominatimResult>>(json);
-                    var items = results.Select(ToSuggestion).ToList();
+                    CreateGroup("⭐ Favorites", SuggestionStorage.LoadFavorites()),
+                    CreateGroup("📍 Results", items),
+                    CreateGroup("🕒 Recent", SuggestionStorage.LoadHistory())
+                }.Where(g => g.Items.Any()).ToList();
 
-                    var groups = new List<SuggestionGroup>
-                    {
-                        CreateGroup("⭐ Favorites", SuggestionStorage.LoadFavorites()),
-                        CreateGroup("📍 Results", items),
-                        CreateGroup("🕒 Recent", SuggestionStorage.LoadHistory())
-                    }.Where(g => g.Items.Any()).ToList();
-
-                    suggestionList.LoadSuggestionsGrouped(groups);
-                }
+                suggestionList.LoadSuggestionsGrouped(groups);
             }
-            catch { suggestionList.Visible = false;}
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Suggestion search failed: {ex}");
+                suggestionList.Visible = false;
+            }
         }
         private void txtSearchBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -145,32 +144,13 @@ namespace Velocity_Rent.Map.Controls
         }
         private async void CurrentLocation(object sender, EventArgs e)
         {
-            try
-            {
-                string json = await _httpClient.GetStringAsync("https://ipinfo.io/json");
-
-                dynamic info = JsonConvert.DeserializeObject(json);
-                string loc = info.loc;
-
-                string[] parts = loc.Split(',');
-                double lat = double.Parse(parts[0], CultureInfo.InvariantCulture);
-                double lon = double.Parse(parts[1], CultureInfo.InvariantCulture);
-
-                await _mapService.MoveToAsync(lat, lon);
-                await ResolveAndRaiseAddressAsync(lat, lon);
-            }
-            catch
-            {
-                MessageBox.Show("Unable to detect current location.");
-            }
+            await _mapService.MoveToCurrentLocationAsync();
         }
-
         private async Task ResolveAndRaiseAddressAsync(double lat, double lon)
         {
             var dto = await ReverseGeocodeAsync(lat, lon);
             OnAddressSelected?.Invoke(dto);
         }
-
         private async Task<AddAddressDto> ReverseGeocodeAsync(double lat, double lon)
         {
             try
@@ -222,6 +202,7 @@ namespace Velocity_Rent.Map.Controls
             try
             {
                 _mapService = new MapboxService();
+                _mapService.OnPointConfirmed += async (lat,lon) => await ResolveAndRaiseAddressAsync(lat, lon);
                 await _mapService.InitializeAsync(webView21);
             }
             catch (Exception ex)
