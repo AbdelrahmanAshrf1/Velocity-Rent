@@ -17,4 +17,5 @@ namespace Velocity_Rent.Forms.Users
             InitializeComponent();
         }
     }
+    }
 }

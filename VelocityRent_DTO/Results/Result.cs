@@ -1,4 +1,4 @@
-﻿public class Result<T> where T : class
+﻿public class Result<T>
 {
     public bool Success { get; }
     public string Message { get; }
@@ -12,5 +12,5 @@
     }
 
     public static Result<T> Successful(T data) => new Result<T>(true, string.Empty, data);
-    public static Result<T> Failure(string message) => new Result<T>(false, message, null);
+    public static Result<T> Failure(string message) => new Result<T>(false, message, default);
 }

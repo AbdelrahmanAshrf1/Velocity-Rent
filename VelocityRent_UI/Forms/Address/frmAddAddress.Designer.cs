@@ -55,6 +55,7 @@
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.guna2VSeparator2 = new Guna.UI2.WinForms.Guna2VSeparator();
@@ -62,6 +63,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtLongitude = new Guna.UI2.WinForms.Guna2TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtLatitude = new Guna.UI2.WinForms.Guna2TextBox();
@@ -73,25 +75,25 @@
             this.btnCancel = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2PictureBox8 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox9 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnCreateAddress = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.gbSearchAddressOnMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Separator3
@@ -127,6 +129,7 @@
             this.txtCountry.SelectedText = "";
             this.txtCountry.Size = new System.Drawing.Size(282, 44);
             this.txtCountry.TabIndex = 79;
+            this.txtCountry.Validating += new System.ComponentModel.CancelEventHandler(this.txtCountry_Validating);
             // 
             // label13
             // 
@@ -175,6 +178,7 @@
             this.txtZipCode.SelectedText = "";
             this.txtZipCode.Size = new System.Drawing.Size(282, 44);
             this.txtZipCode.TabIndex = 75;
+            this.txtZipCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtZipCode_Validating);
             // 
             // label11
             // 
@@ -230,6 +234,7 @@
             this.txtState.SelectedText = "";
             this.txtState.Size = new System.Drawing.Size(282, 44);
             this.txtState.TabIndex = 71;
+            this.txtState.Validating += new System.ComponentModel.CancelEventHandler(this.txtState_Validating);
             // 
             // label9
             // 
@@ -350,6 +355,7 @@
             this.txtCity.SelectedText = "";
             this.txtCity.Size = new System.Drawing.Size(282, 44);
             this.txtCity.TabIndex = 66;
+            this.txtCity.Validating += new System.ComponentModel.CancelEventHandler(this.txtCity_Validating);
             // 
             // label8
             // 
@@ -434,6 +440,18 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(257, 811);
             this.guna2Panel1.TabIndex = 56;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(38, 89);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(109, 106);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 1;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // label5
             // 
@@ -523,6 +541,18 @@
             this.label16.TabIndex = 63;
             this.label16.Text = "Search Address on Map";
             // 
+            // guna2PictureBox7
+            // 
+            this.guna2PictureBox7.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox7.Image")));
+            this.guna2PictureBox7.ImageRotate = 0F;
+            this.guna2PictureBox7.Location = new System.Drawing.Point(299, 24);
+            this.guna2PictureBox7.Name = "guna2PictureBox7";
+            this.guna2PictureBox7.Size = new System.Drawing.Size(64, 64);
+            this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox7.TabIndex = 58;
+            this.guna2PictureBox7.TabStop = false;
+            // 
             // txtLongitude
             // 
             this.txtLongitude.BorderColor = System.Drawing.Color.DarkGray;
@@ -546,6 +576,7 @@
             this.txtLongitude.SelectedText = "";
             this.txtLongitude.Size = new System.Drawing.Size(282, 44);
             this.txtLongitude.TabIndex = 112;
+            this.txtLongitude.Validating += new System.ComponentModel.CancelEventHandler(this.txtLongitude_Validating);
             // 
             // label19
             // 
@@ -582,6 +613,7 @@
             this.txtLatitude.SelectedText = "";
             this.txtLatitude.Size = new System.Drawing.Size(282, 44);
             this.txtLatitude.TabIndex = 109;
+            this.txtLatitude.Validating += new System.ComponentModel.CancelEventHandler(this.txtLatitude_Validating);
             // 
             // label20
             // 
@@ -691,18 +723,6 @@
             this.guna2PictureBox9.TabIndex = 107;
             this.guna2PictureBox9.TabStop = false;
             // 
-            // guna2PictureBox7
-            // 
-            this.guna2PictureBox7.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox7.Image")));
-            this.guna2PictureBox7.ImageRotate = 0F;
-            this.guna2PictureBox7.Location = new System.Drawing.Point(299, 24);
-            this.guna2PictureBox7.Name = "guna2PictureBox7";
-            this.guna2PictureBox7.Size = new System.Drawing.Size(64, 64);
-            this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox7.TabIndex = 58;
-            this.guna2PictureBox7.TabStop = false;
-            // 
             // btnCreateAddress
             // 
             this.btnCreateAddress.BorderRadius = 15;
@@ -727,6 +747,7 @@
             this.btnCreateAddress.Text = "Create Address";
             this.btnCreateAddress.TextFormatNoPrefix = true;
             this.btnCreateAddress.TextOffset = new System.Drawing.Point(15, -14);
+            this.btnCreateAddress.Click += new System.EventHandler(this.btnCreateAddress_Click);
             // 
             // guna2PictureBox6
             // 
@@ -788,17 +809,9 @@
             this.guna2PictureBox2.TabIndex = 57;
             this.guna2PictureBox2.TabStop = false;
             // 
-            // guna2PictureBox1
+            // errorProvider
             // 
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(38, 89);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(109, 106);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 1;
-            this.guna2PictureBox1.TabStop = false;
+            this.errorProvider.ContainerControl = this;
             // 
             // frmAddAddress
             // 
@@ -844,22 +857,24 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddAddress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddAddress";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.gbSearchAddressOnMap.ResumeLayout(false);
             this.gbSearchAddressOnMap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -918,5 +933,6 @@
         private System.Windows.Forms.Label label22;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnCancel;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

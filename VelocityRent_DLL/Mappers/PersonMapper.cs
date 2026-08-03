@@ -6,7 +6,7 @@ namespace VelocityRent_DLL.Mappers
 {
     public static class PersonMapper
     {
-        public static Person ToEntity(AddPersonDto dto)
+        public static Person ToEntity(AddPersonDto dto,int AddressID)
         {
             return new Person(
                 firstName: dto.FirstName,
@@ -15,7 +15,7 @@ namespace VelocityRent_DLL.Mappers
                 phone: dto.Phone,
                 dateOfBirth: dto.DateOfBirth,
                 nationalID: dto.NationalID,
-                addressID: dto.AddressID,
+                addressID: AddressID,
                 profileImage: dto.ProfileImage
             );
         }

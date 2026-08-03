@@ -1,87 +1,170 @@
 ﻿
 using DTO;
+using DTO.Address;
 using DTO.Person;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using Velocity_Rent_DAL;
 using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
+using VelocityRent_DLL.Interfaces;
 using VelocityRent_DLL.Mappers;
 using VelocityRent_Utilities;
 
-namespace VelocityRent_DLL.Services
+namespace VelocityRent_BLL.Services
 {
-    public class PersonService
+    public class PersonService : IPersonService
     {
-        private readonly IPersonRepositroy _repo;
+        private readonly IPersonRepositroy _personRepo;
+        private readonly IAddressRepository _addressRepo;
         private readonly IValidator<AddPersonDto> _addPersonvalidator;
         private readonly IValidator<UpdatePersonDto> _updatePersonvalidator;
+        private readonly IValidator<AddAddressDto> _addAddressValidator;
+        private readonly IValidator<UpdateAddressDto> _updateAddressValidator;
         public PersonService(
-                IPersonRepositroy repo,
+                IPersonRepositroy personRepo,
+                IAddressRepository addressRepo,
                 IValidator<AddPersonDto> addPersonvalidator,
-                IValidator<UpdatePersonDto> updatePersonvalidator)
+                IValidator<UpdatePersonDto> updatePersonvalidator,
+                IValidator<AddAddressDto> addAddressValidator,
+                IValidator<UpdateAddressDto> updateAddressValidator)
         {
-            _repo = repo;
+            _personRepo = personRepo;
+            _addressRepo = addressRepo;
             _addPersonvalidator = addPersonvalidator;
             _updatePersonvalidator = updatePersonvalidator;
+            _addAddressValidator = addAddressValidator;
+            _updateAddressValidator = updateAddressValidator;
         }
 
-        public int AddPerson(AddPersonDto dto)
-        {
-            var validationResult = _addPersonvalidator.Validate(dto);
-            if(!validationResult.IsValid)
-            {
-                LogValidationErrors(validationResult);
-                return -1;
-            }
-            var person = PersonMapper.ToEntity(dto);
-            return _repo.Add(person);
-        }
 
-        public bool UpdatePerson(UpdatePersonDto dto)
+        public Result<int> CreatePerson(CreatePersonRequest request)
         {
-            var validationResult = _updatePersonvalidator.Validate(dto);
 
-            if(!validationResult.IsValid)
+            var personValidationResult = _addPersonvalidator.Validate(request.personDto);
+            if(!personValidationResult.IsValid)
             {
-                LogValidationErrors(validationResult);
-                return false;
+                LogValidationErrors(personValidationResult);
+                return Result<int>.Failure("Invalid Person Data !");
             }
 
-            Person person = _repo.GetByID(dto.ID);
-            if(person == null) return false; 
-            
-            PersonMapper.UpdateEntity(dto, person);
+            var addressValidationResult = _addAddressValidator.Validate(request.AddressDto);
+            if (!addressValidationResult.IsValid)
+            {
+                LogValidationErrors(addressValidationResult);
+                return Result<int>.Failure("Invalid Address Data !");
+            }
 
-            return _repo.Update(person);
+            using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        Address address = AddressMapper.ToEntity(request.AddressDto);
+                        int addressId = _addressRepo.Add(address, connection, transaction);
+                    
+                        Person person = PersonMapper.ToEntity(request.personDto, addressId);
+                        int personId = _personRepo.Add(person, connection, transaction);
+                  
+                        transaction.Commit();
+                        return Result<int>.Successful(personId);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Logger.Error(ex.ToString());
+                        return Result<int>.Failure("Unexpected error.");
+                    }
+                }
+            }
         }
-
-        // Soft delete
-        public bool DeletePerson(int id)
+        public Result<bool> UpdatePerson(UpdatePersonRequest request)
         {
-            Person person = _repo.GetByID(id);
-            if(person == null) return false;
+            var personValidationResult = _updatePersonvalidator.Validate(request.personDto);
+            if(!personValidationResult.IsValid)
+            {
+                LogValidationErrors(personValidationResult);
+                return Result<bool>.Failure("Invalid Person Data !");
+            }
 
-            person.Deactivate();
-            return _repo.Update(person);
+            var addressValidationResult = _updateAddressValidator.Validate(request.addressDto);
+            if (!addressValidationResult.IsValid)
+            {
+                LogValidationErrors(addressValidationResult);
+                return Result<bool>.Failure("Invalid Address Data !");
+            }
+
+            Address address = _addressRepo.GetByID(request.addressDto.ID);
+            if (address == null) return Result<bool>.Failure("Address not found.");
+
+            Person person = _personRepo.GetByID(request.personDto.ID);
+            if (person == null) return Result<bool>.Failure("Person not found.");
+
+            using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+            { 
+                connection.Open();
+
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        AddressMapper.UpdateEntity(request.addressDto, address);
+                        PersonMapper.UpdateEntity(request.personDto, person);
+
+                        if (!_addressRepo.Update(address, connection, transaction))
+                            throw new Exception("Updating address failed.");
+
+                        if (!_personRepo.Update(person, connection, transaction))
+                            throw new Exception("Updating person failed.");
+
+                        transaction.Commit();
+                        return Result<bool>.Successful(true);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Logger.Error(ex.ToString());
+                        return Result<bool>.Failure("Unexpected error.");
+                    }
+                }
+            }
         }
+        public Result<bool> DeletePerson(int id)
+        {
+           
+            if(!_personRepo.Exists(id)) return Result<bool>.Failure("Person not found.");
 
+            return _personRepo.ChangeStatus(id,false)
+                ? Result<bool>.Successful(true)
+                : Result<bool>.Failure("Can not Deactivate the person.");
+        }
         public PersonDto GetPersonByID(int id)
         {
-            Person person = _repo.GetByID(id);
+            Person person = _personRepo.GetByID(id);
 
             return person == null ? null : PersonMapper.ToDto(person);
         }
         public List<PersonDto> GetAllPersons()
         {
-            return _repo.GetAll().Select(PersonMapper.ToDto).ToList();
+            return _personRepo.GetAll().Select(PersonMapper.ToDto).ToList();
         }
-        
+        public Result<bool> Activate(int id)
+        {
+            if (!_personRepo.Exists(id)) return Result<bool>.Failure("Person not found.");
+
+            return _personRepo.ChangeStatus(id, true)
+                ? Result<bool>.Successful(true)
+                : Result<bool>.Failure("Can not Activate the person.");
+        }
         private void LogValidationErrors(FluentValidation.Results.ValidationResult result)
         {
             Logger.Error(string.Join(Environment.NewLine,result.Errors.Select(x => x.ErrorMessage)));
         }
-
     }
 }

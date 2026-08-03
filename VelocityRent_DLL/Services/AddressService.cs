@@ -1,74 +1,45 @@
 ﻿using DTO.Address;
-using FluentValidation;
-using FluentValidation.Results;
-using System;
-using System.Linq;
 using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
+using VelocityRent_DLL.Interfaces;
 using VelocityRent_DLL.Mappers;
-using VelocityRent_Utilities;
 
-namespace VelocityRent_BLL
+namespace VelocityRent_BLL.Services
 {
-    public class AddressService 
+    public class AddressService : IAddressService
     {
         private readonly IAddressRepository _repo;
-        private readonly IValidator<AddAddressDto> _addAddressValidator;
-        private readonly IValidator<UpdateAddressDto> _updateAddressValidator;
-        public AddressService(
-            IAddressRepository addressRepository,
-            IValidator<AddAddressDto> addAddressValidator,
-            IValidator<UpdateAddressDto> updateAddressValidator)
+        public AddressService(IAddressRepository addressRepository)
         {
             _repo = addressRepository;
-            _addAddressValidator = addAddressValidator;
-            _updateAddressValidator = updateAddressValidator;
         }
 
-        public int AddAddress(AddAddressDto dto)
-        {
-            var validationResult = _addAddressValidator.Validate(dto);
-            if(!validationResult.IsValid)
-            {
-                LogValidationResult(validationResult);
-                return -1;
-            }
-            Address address = AddressMapper.ToEntity(dto);
-            return _repo.Add(address);
-        }
-        public bool UpdateAddress(UpdateAddressDto dto)
-        {
-            var validationResult = _updateAddressValidator.Validate(dto);
-
-            if(!validationResult.IsValid)
-            {
-                LogValidationResult(validationResult);
-                return false;
-            }
-
-            Address address = _repo.GetByID(dto.ID);
-            if(address == null) return false;
-
-            AddressMapper.UpdateEntity(dto, address);
-            return _repo.Update(address);
-        }
         // Soft delete
-        public bool Delete(int id)
+        public Result<bool> Delete(int id)
         {
             Address address = _repo.GetByID(id);
-            if(address == null) return false;
-            address.Deactivate();
-            return _repo.Update(address);
+            if(address == null) return Result<bool>.Failure("Address not found.");
+
+            return _repo.ChangeStatus(id,false)
+                ? Result<bool>.Successful(true)
+                : Result<bool>.Failure("Can not Deactivate the address.");
         }
+
+        public Result<bool> Activate(int id)
+        {
+            Address address = _repo.GetByID(id);
+            if (address == null) return Result<bool>.Failure("Address not found.");
+
+            return _repo.ChangeStatus(id, true)
+                ? Result<bool>.Successful(true)
+                : Result<bool>.Failure("Can not Activate the address.");
+        }
+
         public AddressDto GetByID(int id)
         {
             Address address = _repo.GetByID(id);
             return address == null ? null : AddressMapper.ToDto(address);
         }
 
-        private void LogValidationResult(ValidationResult Result)
-        {
-            Logger.Error(string.Join(Environment.NewLine, Result.Errors.Select(x => x.ErrorMessage)));
-        }
     }
 }

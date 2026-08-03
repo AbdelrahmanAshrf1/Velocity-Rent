@@ -12,7 +12,6 @@ namespace Velocity_Rent.Login_Form
     public partial class frmLogin : Form
     {
         private const string LinkedInURL = "https://www.linkedin.com/in/abdulrhman-ashraf-71bb68254/";
-        private const string InvalidLoginMessage = "Invalid username or password.";
 
         private readonly IUserService _userService;
         private readonly IServiceProvider _provider;
