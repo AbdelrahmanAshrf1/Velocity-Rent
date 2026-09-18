@@ -10,19 +10,19 @@ namespace Velocity_Rent_DAL.Repositories
 {
     public class PersonRepository : IPersonRepositroy
     {
-        public int Add(Person person,SqlConnection connection, SqlTransaction transaction)
+        public int Add(Person person, SqlConnection connection, SqlTransaction transaction)
         {
             int id = -1;
             try
             {
                 string query = @"
-        INSERT INTO People 
+        INSERT INTO Persons 
         (FirstName, LastName, Email, Phone, DateOfBirth, NationalID, AddressID, ProfileImage)
         VALUES
         (@FirstName, @LastName, @Email, @Phone, @DateOfBirth, @NationalID, @AddressID, @ProfileImage);
         SELECT SCOPE_IDENTITY();";
 
-                using (SqlCommand command = new SqlCommand(query, connection,transaction))
+                using (SqlCommand command = new SqlCommand(query, connection, transaction))
                 {
                     command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = person.FirstName;
                     command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = person.LastName;
@@ -37,7 +37,7 @@ namespace Velocity_Rent_DAL.Repositories
                     id = Convert.ToInt32(result);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error(ex.Message);
                 throw;
@@ -59,9 +59,9 @@ namespace Velocity_Rent_DAL.Repositories
                                     NationalID,
                                     AddressID,
                                     ProfileImage,
-                                    CreatedDate,
+                                    CreateDate,
                                     IsActive
-                                FROM People 
+                                FROM Persons 
                                 WHERE PersonID = @ID;";
 
                 using (SqlConnection connection = DbConnectionFactory.CreateConnection())
@@ -91,8 +91,37 @@ namespace Velocity_Rent_DAL.Repositories
                                 SELECT CASE
                                     WHEN EXISTS (
                                         SELECT 1
-                                        FROM People
+                                        FROM Persons
                                         WHERE PersonID = @ID)
+                                    THEN 1
+                                    ELSE 0
+                                END";
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+                throw;
+            }
+        }
+        public bool HasUser(int id)
+        {
+            try
+            {
+                string query = @"
+                                SELECT CASE
+                                    WHEN EXISTS (
+                                        SELECT 1
+                                        FROM Users u
+                                        WHERE u.PersonID = @ID)
                                     THEN 1
                                     ELSE 0
                                 END";
@@ -117,7 +146,7 @@ namespace Velocity_Rent_DAL.Repositories
             try
             {
                 string query = @"
-                                 UPDATE People
+                                 UPDATE Persons
                                  SET FirstName=@FirstName,
                                      LastName=@LastName,
                                      Email=@Email,
@@ -126,7 +155,7 @@ namespace Velocity_Rent_DAL.Repositories
                                      ProfileImage=@ProfileImage
                                  WHERE PersonID=@ID";
 
-                using (SqlCommand command = new SqlCommand(query, connection,transaction))
+                using (SqlCommand command = new SqlCommand(query, connection, transaction))
                 {
                     command.Parameters.Add("@ID", SqlDbType.Int).Value = person.ID;
 
@@ -147,21 +176,21 @@ namespace Velocity_Rent_DAL.Repositories
         }
         public bool Delete(int id)
         {
-            string query = @"DELETE FROM People WHERE PersonID = @ID;";
+            string query = @"DELETE FROM Persons WHERE PersonID = @ID;";
 
             try
-            { 
-                using(SqlConnection connection = DbConnectionFactory.CreateConnection())
-                using (SqlCommand command = new SqlCommand(query,connection))
+            {
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.Add("@ID",SqlDbType.Int).Value = id;
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-                    connection.Open(); 
+                    connection.Open();
 
                     return command.ExecuteNonQuery() > 0;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error(ex.Message);
                 throw;
@@ -181,18 +210,18 @@ namespace Velocity_Rent_DAL.Repositories
                                 NationalID,
                                 AddressID,
                                 ProfileImage,
-                                CreatedDate,
+                                CreateDate,
                                 IsActive
-                            FROM People;";
+                            FROM Persons;";
 
             try
             {
-                using(SqlConnection connection = DbConnectionFactory.CreateConnection())
+                using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
 
-                    using(SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
                         while (reader.Read())
@@ -200,7 +229,7 @@ namespace Velocity_Rent_DAL.Repositories
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error(ex.Message);
                 throw;
@@ -213,7 +242,7 @@ namespace Velocity_Rent_DAL.Repositories
             int rowsAffected = 0;
             try
             {
-                string qurry = @"UPDATE People SET IsActive = @IsActive WHERE PersonID = @ID";
+                string qurry = @"UPDATE Persons SET IsActive = @IsActive WHERE PersonID = @ID";
 
                 using (SqlConnection connection = DbConnectionFactory.CreateConnection())
                 using (SqlCommand command = new SqlCommand(qurry, connection))
@@ -247,7 +276,7 @@ namespace Velocity_Rent_DAL.Repositories
                 reader.IsDBNull(reader.GetOrdinal("ProfileImage"))
                 ? null
                 : reader.GetString(reader.GetOrdinal("ProfileImage")),
-                reader.GetDateTime(reader.GetOrdinal("CreatedDate")),
+                reader.GetDateTime(reader.GetOrdinal("CreateDate")),
                 reader.GetBoolean(reader.GetOrdinal("IsActive"))
             );
         }

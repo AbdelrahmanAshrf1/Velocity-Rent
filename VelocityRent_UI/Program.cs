@@ -3,6 +3,8 @@ using System;
 using System.Windows.Forms;
 using Velocity_Rent.Dependency_Injection;
 using Velocity_Rent.Forms.Address;
+using Velocity_Rent.Forms.People;
+using Velocity_Rent.Forms.Users;
 using Velocity_Rent.Login_Form;
 
 namespace Velocity_Rent
@@ -21,8 +23,9 @@ namespace Velocity_Rent
 
             var provider = DependencyInjection.ConfigureServices();
 
-            //Application.Run(provider.GetRequiredService<frmLogin>());
-            Application.Run(new frmAddAddress());
+            Application.Run(provider.GetRequiredService<frmLogin>());
+            //Application.Run(provider.GetRequiredService<frmUserEditor>());
+            //Application.Run(provider.GetRequiredService<frmMain>());
         }
     }
 }

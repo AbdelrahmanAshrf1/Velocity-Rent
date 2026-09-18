@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
 using Velocity_Rent_DAL;
 using Velocity_Rent_DAL.Interfaces;
 using VelocityRent.Entities;
@@ -41,11 +40,12 @@ namespace VelocityRent_BLL.Services
             _updateAddressValidator = updateAddressValidator;
         }
 
-
+        public bool Exists(int id) => _personRepo.Exists(id);
+        public bool HasUser (int id) => _personRepo.HasUser(id);
         public Result<int> CreatePerson(CreatePersonRequest request)
         {
 
-            var personValidationResult = _addPersonvalidator.Validate(request.personDto);
+            var personValidationResult = _addPersonvalidator.Validate(request.PersonDto);
             if(!personValidationResult.IsValid)
             {
                 LogValidationErrors(personValidationResult);
@@ -57,7 +57,7 @@ namespace VelocityRent_BLL.Services
             {
                 LogValidationErrors(addressValidationResult);
                 return Result<int>.Failure("Invalid Address Data !");
-            }
+            } 
 
             using (SqlConnection connection = DbConnectionFactory.CreateConnection())
             {
@@ -69,7 +69,7 @@ namespace VelocityRent_BLL.Services
                         Address address = AddressMapper.ToEntity(request.AddressDto);
                         int addressId = _addressRepo.Add(address, connection, transaction);
                     
-                        Person person = PersonMapper.ToEntity(request.personDto, addressId);
+                        Person person = PersonMapper.ToEntity(request.PersonDto, addressId);
                         int personId = _personRepo.Add(person, connection, transaction);
                   
                         transaction.Commit();
@@ -86,24 +86,24 @@ namespace VelocityRent_BLL.Services
         }
         public Result<bool> UpdatePerson(UpdatePersonRequest request)
         {
-            var personValidationResult = _updatePersonvalidator.Validate(request.personDto);
+            var personValidationResult = _updatePersonvalidator.Validate(request.PersonDto);
             if(!personValidationResult.IsValid)
             {
                 LogValidationErrors(personValidationResult);
                 return Result<bool>.Failure("Invalid Person Data !");
             }
 
-            var addressValidationResult = _updateAddressValidator.Validate(request.addressDto);
+            var addressValidationResult = _updateAddressValidator.Validate(request.AddressDto);
             if (!addressValidationResult.IsValid)
             {
                 LogValidationErrors(addressValidationResult);
                 return Result<bool>.Failure("Invalid Address Data !");
             }
 
-            Address address = _addressRepo.GetByID(request.addressDto.ID);
+            Address address = _addressRepo.GetByID(request.AddressDto.ID);
             if (address == null) return Result<bool>.Failure("Address not found.");
 
-            Person person = _personRepo.GetByID(request.personDto.ID);
+            Person person = _personRepo.GetByID(request.PersonDto.ID);
             if (person == null) return Result<bool>.Failure("Person not found.");
 
             using (SqlConnection connection = DbConnectionFactory.CreateConnection())
@@ -114,8 +114,8 @@ namespace VelocityRent_BLL.Services
                 {
                     try
                     {
-                        AddressMapper.UpdateEntity(request.addressDto, address);
-                        PersonMapper.UpdateEntity(request.personDto, person);
+                        AddressMapper.UpdateEntity(request.AddressDto, address);
+                        PersonMapper.UpdateEntity(request.PersonDto, person);
 
                         if (!_addressRepo.Update(address, connection, transaction))
                             throw new Exception("Updating address failed.");

@@ -14,5 +14,10 @@ namespace Velocity_Rent
         {
             InitializeComponent();
         }
+
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+            ucMapWithSearch1.LoadFavoritesAndRecent();
+        }
     }
 }

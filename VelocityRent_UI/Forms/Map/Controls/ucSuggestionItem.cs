@@ -15,6 +15,7 @@ namespace Velocity_Rent.Map.Controls
         }
         public class SuggestionItem
         {
+            public string MapboxId { get; set; }
             public string Title { get; set; }
             public string Subtitle { get; set; } = "";
             public SuggestionType Type { get; set; } = SuggestionType.Location;

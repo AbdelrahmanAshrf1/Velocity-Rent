@@ -14,8 +14,6 @@ namespace DTO
 
         public string NationalID { get; set; }
 
-        public int AddressID { get; set; }
-
         public string ProfileImage { get; set; }
     }
 }

@@ -143,6 +143,16 @@ namespace Velocity_Rent.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DefaultPerson {
+            get {
+                object obj = ResourceManager.GetObject("DefaultPerson", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap heart_filled {
             get {
                 object obj = ResourceManager.GetObject("heart_filled", resourceCulture);

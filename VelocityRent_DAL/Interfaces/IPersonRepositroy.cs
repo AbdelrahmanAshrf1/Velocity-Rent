@@ -14,5 +14,6 @@ namespace Velocity_Rent_DAL.Interfaces
         Person GetByID(int id);
         List<Person> GetAll();
         bool ChangeStatus(int id, bool status);
+        bool HasUser(int id);
     }
 }

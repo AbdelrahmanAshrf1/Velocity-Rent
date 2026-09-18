@@ -31,7 +31,7 @@ namespace Velocity_Rent.Map.Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SATAUiFramework.BorderRadius borderRadius1 = new SATAUiFramework.BorderRadius();
+            SATAUiFramework.BorderRadius borderRadius2 = new SATAUiFramework.BorderRadius();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMapWithSearch));
             this.sataPanel1 = new SATAUiFramework.SATAPanel();
             this.gbSuggestionList = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -43,6 +43,7 @@ namespace Velocity_Rent.Map.Controls
             this.gbMapContainer = new Guna.UI2.WinForms.Guna2GroupBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.guna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.sataPanel1.SuspendLayout();
             this.gbSuggestionList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,11 +56,11 @@ namespace Velocity_Rent.Map.Controls
             this.sataPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(32)))));
             this.sataPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(22)))));
             this.sataPanel1.BorderColor = System.Drawing.Color.Black;
-            borderRadius1.BottomLeft = 10;
-            borderRadius1.BottomRight = 10;
-            borderRadius1.TopLeft = 10;
-            borderRadius1.TopRight = 10;
-            this.sataPanel1.BorderRadius = borderRadius1;
+            borderRadius2.BottomLeft = 10;
+            borderRadius2.BottomRight = 10;
+            borderRadius2.TopLeft = 10;
+            borderRadius2.TopRight = 10;
+            this.sataPanel1.BorderRadius = borderRadius2;
             this.sataPanel1.BorderThickness = 0;
             this.sataPanel1.Controls.Add(this.gbSuggestionList);
             this.sataPanel1.Controls.Add(this.guna2Separator1);
@@ -172,6 +173,11 @@ namespace Velocity_Rent.Map.Controls
             this.guna2Elipse.BorderRadius = 30;
             this.guna2Elipse.TargetControl = this.webView21;
             // 
+            // timer
+            // 
+            this.timer.Interval = 300;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // ucMapWithSearch
             // 
             resources.ApplyResources(this, "$this");
@@ -203,5 +209,6 @@ namespace Velocity_Rent.Map.Controls
         private Guna2Elipse guna2Elipse;
         private Guna2GroupBox gbSuggestionList;
         private ucSuggestionsList suggestionList;
+        private System.Windows.Forms.Timer timer;
     }
 }

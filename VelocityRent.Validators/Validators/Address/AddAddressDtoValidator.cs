@@ -5,7 +5,7 @@ namespace VelocityRent.Validators.Validators.Address
 {
     public class AddAddressDtoValidator :AbstractValidator<AddAddressDto>
     {
-        protected AddAddressDtoValidator()
+        public AddAddressDtoValidator()
         {
             RuleFor(x => x.City).NotEmpty().MaximumLength(100);
             RuleFor(x => x.State).NotEmpty().MaximumLength(100);

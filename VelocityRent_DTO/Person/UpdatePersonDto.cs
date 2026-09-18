@@ -16,5 +16,7 @@ namespace DTO.Person
         public DateTime DateOfBirth { get; set; }
 
         public string ProfileImage { get; set; }
+
+        public UpdatePersonDto(int personID) { ID = personID; }
     }
 }

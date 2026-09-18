@@ -1,12 +1,12 @@
 ﻿public class Result<T>
 {
-    public bool Success { get; }
+    public bool IsSuccess { get; }
     public string Message { get; }
     public T Data { get; }
 
     private Result(bool success, string message, T data)
     {
-        Success = success;
+        IsSuccess = success;
         Message = message;
         Data = data;
     }

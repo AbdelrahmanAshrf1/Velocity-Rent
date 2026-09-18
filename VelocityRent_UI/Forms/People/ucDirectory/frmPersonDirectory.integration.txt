@@ -1,0 +1,123 @@
+// 1) Keep this using:
+using Velocity_Rent.Controls.Directory;
+
+// 2) Field:
+private ucDirectory _personGrid;
+
+// 3) Create/configure the control once in BuildForm(), after you create card/gridHost:
+_personGrid = new ucDirectory
+{
+    Dock = DockStyle.Fill,
+    PageSize = 10
+};
+
+_personGrid.Configure<PersonDtotest>(
+    new[]
+    {
+        DirectoryColumn<PersonDtotest>.Image(
+            "ProfileImage", "", 62,
+            p => p.ProfileImage,
+            46),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "FullName", "Full Name", 150,
+            p => p.FullName),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "NationalID", "National ID", 130,
+            p => p.NationalID),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "Email", "Email", 165,
+            p => p.Email),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "Phone", "Phone", 125,
+            p => p.Phone),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "City", "City", 85,
+            p => p.City),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "Country", "Country", 85,
+            p => p.Country),
+
+        DirectoryColumn<PersonDtotest>.Text(
+            "AddressType", "Address Type", 105,
+            p => p.AddressType)
+    },
+    DirectoryAction<PersonDtotest>.Button("View", "View", 64),
+    DirectoryAction<PersonDtotest>.Button("Edit", "Edit", 64)
+);
+
+_personGrid.ActionClicked += PersonGrid_ActionClicked;
+gridHost.Controls.Add(_personGrid);
+
+// 4) ApplyQuery remains simple:
+private void ApplyQuery()
+{
+    IEnumerable<PersonDtotest> query = _persons;
+    string search = _txtSearch == null ? string.Empty : _txtSearch.Text.Trim();
+
+    if (!string.IsNullOrWhiteSpace(search))
+    {
+        query = query.Where(p =>
+            Contains(p.FullName, search) ||
+            Contains(p.NationalID, search) ||
+            Contains(p.Phone, search));
+    }
+
+    if (_cmbCity != null && _cmbCity.SelectedIndex > 0 && _cmbCity.SelectedItem != null)
+    {
+        string city = _cmbCity.SelectedItem.ToString();
+        query = query.Where(p => string.Equals(
+            p.City, city, StringComparison.OrdinalIgnoreCase));
+    }
+
+    bool ascending = _cmbSort == null || _cmbSort.SelectedIndex <= 0;
+
+    query = ascending
+        ? query.OrderBy(p => p.FullName)
+        : query.OrderByDescending(p => p.FullName);
+
+    // This method now EXISTS on ucDirectory.
+    _personGrid.SetData(query.ToList());
+}
+
+// 5) Replace PersonRowActionEventArgs with DirectoryRowActionEventArgs.
+private void PersonGrid_ActionClicked(
+    object sender,
+    DirectoryRowActionEventArgs e)
+{
+    var person = e.GetItem<PersonDtotest>();
+
+    if (e.ActionKey == "View")
+        PersonGrid_ViewClicked(person);
+    else if (e.ActionKey == "Edit")
+        PersonGrid_EditClicked(person);
+}
+
+private void PersonGrid_ViewClicked(PersonDtotest person)
+{
+    MessageBox.Show(
+        string.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}, {5}",
+            person.FullName,
+            person.NationalID,
+            person.Email,
+            person.Phone,
+            person.City,
+            person.Country),
+        "Person Details",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
+}
+
+private void PersonGrid_EditClicked(PersonDtotest person)
+{
+    MessageBox.Show(
+        "Open your existing person editor here for ID " + person.ID + ".",
+        "Edit Person",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
+}

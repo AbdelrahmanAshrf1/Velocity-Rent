@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,6 +45,9 @@
     </Reference>
     <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>packages\FluentValidation.11.10.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="GumroadLicensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GumroadLicensing.1.0.3\lib\net40\GumroadLicensing.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
@@ -84,6 +88,9 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Tokens.8.14.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3650.58, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.WebView2.1.0.3650.58\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
     </Reference>
@@ -98,6 +105,42 @@
     </Reference>
     <Reference Include="SATAUiFramework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SATAUiFramework.1.1.3\lib\net40\SATAUiFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Core.WinForms.34.2.7\lib\net462\Syncfusion.Core.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Data.WinForms.34.2.7\lib\net462\Syncfusion.Data.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DataSource.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.DataSource.WinForms.34.2.7\lib\net462\Syncfusion.DataSource.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Grid.Windows.34.2.7\lib\net462\Syncfusion.Grid.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.GridCommon.WinForms.34.2.7\lib\net462\Syncfusion.GridCommon.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Licensing.34.2.7\lib\net462\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfDataGrid.WinForms.34.2.7\lib\net462\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfInput.WinForms.34.2.7\lib\net462\Syncfusion.SfInput.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfListView.WinForms, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfListView.WinForms.34.2.7\lib\net462\Syncfusion.SfListView.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Shared.Base.34.2.7\lib\net462\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Shared.Windows.34.2.7\lib\net462\Syncfusion.Shared.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Telemetry, Version=34.2462.7.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Telemetry.34.2.7\lib\net462\Syncfusion.Telemetry.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -122,6 +165,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.10.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.10.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -149,6 +193,9 @@
       <HintPath>packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -158,14 +205,21 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>packages\WebActivatorEx.2.0.4\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependency Injection\DependencyInjection.cs" />
-    <Compile Include="Forms\Address\frmAddAddress.cs">
+    <Compile Include="Enums\enFormMode.cs" />
+    <Compile Include="Forms\Address\frmAddressEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Address\frmAddAddress.Designer.cs">
-      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    <Compile Include="Forms\Address\frmAddressEditor.Designer.cs">
+      <DependentUpon>frmAddressEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Bookings\frmBookings.cs">
       <SubType>Form</SubType>
@@ -179,23 +233,42 @@
     <Compile Include="Forms\Customers\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Map\Controls\MapboxModels.cs" />
     <Compile Include="Forms\Map\Forms\frmMapPicker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Map\Forms\frmMapPicker.Designer.cs">
       <DependentUpon>frmMapPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\People\frmAddNewPerson.cs">
+    <Compile Include="Forms\People\frmPersonDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\People\frmAddNewPerson.Designer.cs">
-      <DependentUpon>frmAddNewPerson.cs</DependentUpon>
+    <Compile Include="Forms\People\frmPersonDirectory.Designer.cs">
+      <DependentUpon>frmPersonDirectory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\frmAddNewUser.cs">
+    <Compile Include="Forms\People\frmPersonEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Users\frmAddNewUser.Designer.cs">
-      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    <Compile Include="Forms\People\frmPersonEditor.Designer.cs">
+      <DependentUpon>frmPersonEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\People\frmPersonViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\People\frmPersonViewer.Designer.cs">
+      <DependentUpon>frmPersonViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\People\ucDirectory\DirectoryAction.cs" />
+    <Compile Include="Forms\People\ucDirectory\DirectoryColumn.cs" />
+    <Compile Include="Forms\People\ucDirectory\DirectoryRowActionEventArgs.cs" />
+    <Compile Include="Forms\People\ucDirectory\ucDirectory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\frmUserEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\frmUserEditor.Designer.cs">
+      <DependentUpon>frmUserEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Login Form\frmLogin.cs">
       <SubType>Form</SubType>
@@ -281,8 +354,8 @@
     <Compile Include="Forms\Vehicles\frmVehicles.Designer.cs">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Address\frmAddAddress.resx">
-      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Address\frmAddressEditor.resx">
+      <DependentUpon>frmAddressEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Bookings\frmBookings.resx">
       <DependentUpon>frmBookings.cs</DependentUpon>
@@ -293,11 +366,20 @@
     <EmbeddedResource Include="Forms\Map\Forms\frmMapPicker.resx">
       <DependentUpon>frmMapPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\People\frmAddNewPerson.resx">
-      <DependentUpon>frmAddNewPerson.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\People\frmPersonDirectory.resx">
+      <DependentUpon>frmPersonDirectory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Users\frmAddNewUser.resx">
-      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\People\frmPersonEditor.resx">
+      <DependentUpon>frmPersonEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\People\frmPersonViewer.resx">
+      <DependentUpon>frmPersonViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\People\ucDirectory\ucDirectory.resx">
+      <DependentUpon>ucDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\frmUserEditor.resx">
+      <DependentUpon>frmUserEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Form\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -350,6 +432,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -430,6 +513,9 @@
     <Content Include="Forms\Map\Services\WebFiles\map.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Forms\Resources\Images\ChatGPT_Image_Dec_29__2025__09_17_20_AM-Photoroom-removebg-preview.png" />
     <None Include="Forms\Resources\Images\user.png" />
     <None Include="Forms\Resources\Images\plus.png" />
@@ -441,6 +527,10 @@
     <None Include="Forms\Resources\Images\compass.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VelocityRent.Entities\VelocityRent.Domain.csproj">
+      <Project>{A6D9D2C1-1B1B-4699-B17F-53994AA27D54}</Project>
+      <Name>VelocityRent.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VelocityRent.Validators\VelocityRent.Validators.csproj">
       <Project>{DCDBA3EE-C1E1-45C5-883D-528CE005B89F}</Project>
       <Name>VelocityRent.Validators</Name>
@@ -457,8 +547,14 @@
       <Project>{1c7b7aaa-850e-43e9-beaf-8b61bc7f95f2}</Project>
       <Name>VelocityRent.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VelocityRent_Utilities\VelocityRent.Utilities.csproj">
+      <Project>{4AC104E8-3FB8-4332-88F6-3A62B4764C36}</Project>
+      <Name>VelocityRent.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\Controls\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

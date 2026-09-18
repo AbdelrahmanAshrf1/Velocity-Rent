@@ -3,10 +3,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Velocity_Rent.Map.Services;
@@ -17,9 +19,17 @@ namespace Velocity_Rent.Map.Controls
 {
     public partial class ucMapWithSearch : UserControl
     {
-        private static readonly HttpClient _httpClient = CreateHttpClient();
         private IMapService _mapService;
+
+        private readonly string _mapboxToken = ConfigurationManager.AppSettings["MapboxAccessToken"];
+        private Guid _sessionToken = Guid.NewGuid();
+        private bool _hadTextLastChange = false; // tracks empty -> non-empty transitions
+
+        private static readonly HttpClient _httpClient = CreateHttpClient();
         public event Action<AddAddressDto> OnAddressSelected;
+
+        private CancellationTokenSource _searchCancellation = null;
+        private string _query;
         public ucMapWithSearch()
         {
             InitializeComponent();
@@ -33,37 +43,21 @@ namespace Velocity_Rent.Map.Controls
             client.DefaultRequestHeaders.Add("Accept-Language", "en");
             return client;
         }
+        private SuggestionItem ToSuggestion(MapboxSuggestion s)
+        {
+            string subtitle = !string.IsNullOrWhiteSpace(s.place_formatted)
+                ? s.place_formatted
+                : s.full_address
+                  ?? s.context?.region?.name
+                  ?? s.context?.country?.name
+                  ?? "";
 
-        public class NominatimResult
-        {
-            public string display_name { get; set; }
-            public string lat { get; set; }
-            public string lon { get; set; }
-        }
-        public class NominatimAddress
-        {
-            public string city { get; set; }
-            public string town { get; set; }
-            public string village { get; set; }
-            public string state { get; set; }
-            public string postcode { get; set; }
-            public string country { get; set; }
-        }
-        public class NominatimReverseResult
-        {
-            public string display_name { get; set; }
-            public NominatimAddress address { get; set; }
-        }
-
-        private SuggestionItem ToSuggestion(NominatimResult r)
-        {
             return new SuggestionItem
             {
-                Title = r.display_name,
-                Subtitle = $"{r.lat}, {r.lon}",
+                Title = s.name,
+                Subtitle = subtitle,
                 Type = SuggestionType.Location,
-                Lat = double.TryParse(r.lat, out var la) ? la : (double?)null,
-                Lon = double.TryParse(r.lon, out var lo) ? lo : (double?)null
+                MapboxId = s.mapbox_id
             };
         }
         private void SetupSuggestionList()
@@ -72,32 +66,105 @@ namespace Velocity_Rent.Map.Controls
             {
                 txtSearchBox.Text = item.Title;
                 suggestionList.Visible = false;
+                if (string.IsNullOrEmpty(item.MapboxId)) return;
 
-                if (!item.Lat.HasValue || !item.Lon.HasValue) return;
+                var (lat, lon) = await RetrieveCoordinatesAsync(item.MapboxId);
+                if (lat == null || lon == null) return;
 
-                await _mapService.MoveToAsync(item.Lat.Value, item.Lon.Value);
+                await _mapService.MoveToAsync(lat.Value, lon.Value);
             };
         }
-
-        private async void txtSearchBox_TextChanged(object sender, EventArgs e)
+        private async Task<(double? lat, double? lon)> RetrieveCoordinatesAsync(string mapboxId)
         {
-            string query = txtSearchBox.Text;
-
-            if (string.IsNullOrWhiteSpace(query))
+            try
             {
+                string url = $"https://api.mapbox.com/search/searchbox/v1/retrieve/{mapboxId}"
+                    + $"?session_token={_sessionToken}"
+                    + $"&access_token={_mapboxToken}";
+
+                string json = await _httpClient.GetStringAsync(url);
+                var parsed = JsonConvert.DeserializeObject<MapboxRetrieveResponse>(json);
+                var feature = parsed?.features?.FirstOrDefault();
+                var coords = feature?.geometry?.coordinates;
+
+                if (coords == null || coords.Count < 2) return (null, null);
+
+                // GeoJSON order is [longitude, latitude] — easy to flip by accident, double check this
+                return (coords[1], coords[0]);
+            }
+            catch
+            {
+                return (null, null);
+            }
+        }
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            timer.Stop();
+            timer.Start();
+            _query = txtSearchBox.Text;
+
+            bool hasTextNow = !string.IsNullOrWhiteSpace(_query);
+            if (hasTextNow && !_hadTextLastChange) _sessionToken = Guid.NewGuid();
+            _hadTextLastChange = hasTextNow;
+
+            if (string.IsNullOrWhiteSpace(_query))
+            {
+                timer.Stop();
                 LoadFavoritesAndRecent();
                 return;
             }
 
-            if (query.Length < 2)
+            if (_query.Length < 2)
             {
+                timer.Stop();
                 suggestionList.Visible = false;
                 return;
             }
-
-            await LoadSuggestionsAsync(query);
         }
-        private void LoadFavoritesAndRecent()
+        private async void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            await LoadSuggestionsAsync(_query);
+        }
+        private async Task LoadSuggestionsAsync(string query)
+        {
+            _searchCancellation?.Cancel();
+            _searchCancellation?.Dispose();
+            _searchCancellation = new CancellationTokenSource();
+            CancellationToken token = _searchCancellation.Token;
+
+            try
+            {
+                string url = "https://api.mapbox.com/search/searchbox/v1/suggest"
+                      + $"?q={Uri.EscapeDataString(query)}"
+                      + "&language=ar"
+                      + "&country=eg"
+                      + $"&session_token={_sessionToken}"
+                      + $"&access_token={_mapboxToken}";
+
+                HttpResponseMessage response = await _httpClient.GetAsync(url, token);
+                response.EnsureSuccessStatusCode();
+
+                string json = await response.Content.ReadAsStringAsync();
+                var parsed = JsonConvert.DeserializeObject<MapboxSuggestResponse>(json);
+                var suggestions = parsed?.suggestions ?? new List<MapboxSuggestion>();
+                var items = suggestions.Select(ToSuggestion).ToList();
+
+                var groups = new List<SuggestionGroup>
+                {
+                    CreateGroup("⭐ Favorites", SuggestionStorage.LoadFavorites()),
+                    CreateGroup("📍 Results", items),
+                    CreateGroup("🕒 Recent", SuggestionStorage.LoadHistory())
+                }
+                .Where(g => g.Items.Any())
+                .ToList();
+
+                if (query != txtSearchBox.Text) return;
+                suggestionList.LoadSuggestionsGrouped(groups);
+            }
+            catch (TaskCanceledException) {}
+        }
+        public void LoadFavoritesAndRecent()
         {
             var groups = new List<SuggestionGroup>()
             {
@@ -113,30 +180,6 @@ namespace Velocity_Rent.Map.Controls
         private SuggestionGroup CreateGroup(string title,List<SuggestionItem> list)
         {
             return new SuggestionGroup { Title = title, Items = list }; 
-        }
-        private async Task LoadSuggestionsAsync(string query)
-        {
-            try
-            {
-                string url = $"https://nominatim.openstreetmap.org/search?q={Uri.EscapeDataString(query)}&format=json&limit=7";
-                string json = await _httpClient.GetStringAsync(url);
-                var results = JsonConvert.DeserializeObject<List<NominatimResult>>(json) ?? new List<NominatimResult>();
-                var items = results.Select(ToSuggestion).ToList();
-
-                var groups = new List<SuggestionGroup>
-                {
-                    CreateGroup("⭐ Favorites", SuggestionStorage.LoadFavorites()),
-                    CreateGroup("📍 Results", items),
-                    CreateGroup("🕒 Recent", SuggestionStorage.LoadHistory())
-                }.Where(g => g.Items.Any()).ToList();
-
-                suggestionList.LoadSuggestionsGrouped(groups);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Suggestion search failed: {ex}");
-                suggestionList.Visible = false;
-            }
         }
         private void txtSearchBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -155,17 +198,23 @@ namespace Velocity_Rent.Map.Controls
         {
             try
             {
-                string url = $"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&addressdetails=1";
+                string url = "https://api.mapbox.com/search/geocode/v6/reverse"
+                    + $"?longitude={lon.ToString(CultureInfo.InvariantCulture)}"
+                    + $"&latitude={lat.ToString(CultureInfo.InvariantCulture)}"
+                    + "&language=ar"
+                    + $"&access_token={_mapboxToken}";
+
                 string json = await _httpClient.GetStringAsync(url);
-                var result = JsonConvert.DeserializeObject<NominatimReverseResult>(json);
-                var addr = result?.address ?? new NominatimAddress();
+                var parsed = JsonConvert.DeserializeObject<MapboxRetrieveResponse>(json);
+                var props = parsed?.features?.FirstOrDefault()?.properties;
+                var ctx = props?.context;
 
                 return new AddAddressDto
                 {
-                    City = addr.city ?? addr.town ?? addr.village ?? string.Empty,
-                    State = addr.state ?? string.Empty,
-                    ZipCode = addr.postcode ?? string.Empty,
-                    Country = addr.country ?? string.Empty,
+                    City = ctx?.place?.name ?? string.Empty,
+                    State = ctx?.region?.name ?? string.Empty,
+                    ZipCode = ctx?.postcode?.name ?? string.Empty,
+                    Country = ctx?.country?.name ?? string.Empty,
                     Latitude = (decimal)lat,
                     Longitude = (decimal)lon
                 };

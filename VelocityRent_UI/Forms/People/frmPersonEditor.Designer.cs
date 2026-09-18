@@ -1,6 +1,6 @@
 ﻿namespace Velocity_Rent.Forms.People
 {
-    partial class frmAddNewPerson
+    partial class frmPersonEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewPerson));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonEditor));
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtFirstName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblMode = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.lblContactUs = new System.Windows.Forms.Label();
+            this.lblBrief = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSidebarMode = new System.Windows.Forms.Label();
             this.txtLastName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
@@ -59,13 +59,13 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.txtNationalID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.btnAddNewPerson = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnSave = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSubMode = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtDateOfBirth = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -73,18 +73,18 @@
             this.txtAddressID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnAddNewAddress = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnOpenAddressForm = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2PictureBox10 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.gbSearchAddressOnMap = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.pbPersonImage = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnBrowse = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.label17 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.PictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.pbPersonImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox8)).BeginInit();
@@ -97,9 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).BeginInit();
             this.gbSearchAddressOnMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPhone
@@ -194,22 +194,22 @@
             this.guna2Separator2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
             this.guna2Separator2.FillThickness = 2;
-            this.guna2Separator2.Location = new System.Drawing.Point(475, 89);
+            this.guna2Separator2.Location = new System.Drawing.Point(458, 89);
             this.guna2Separator2.Name = "guna2Separator2";
             this.guna2Separator2.Size = new System.Drawing.Size(159, 10);
             this.guna2Separator2.TabIndex = 120;
             // 
-            // label3
+            // lblMode
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
-            this.label3.Location = new System.Drawing.Point(442, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 40);
-            this.label3.TabIndex = 118;
-            this.label3.Text = "Add";
+            this.lblMode.AutoSize = true;
+            this.lblMode.BackColor = System.Drawing.Color.Transparent;
+            this.lblMode.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
+            this.lblMode.Location = new System.Drawing.Point(442, 46);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(111, 40);
+            this.lblMode.TabIndex = 118;
+            this.lblMode.Text = "Update";
             // 
             // guna2Separator1
             // 
@@ -221,18 +221,18 @@
             this.guna2Separator1.Size = new System.Drawing.Size(55, 10);
             this.guna2Separator1.TabIndex = 8;
             // 
-            // lblContactUs
+            // lblBrief
             // 
-            this.lblContactUs.AutoSize = true;
-            this.lblContactUs.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblContactUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContactUs.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContactUs.ForeColor = System.Drawing.Color.White;
-            this.lblContactUs.Location = new System.Drawing.Point(27, 351);
-            this.lblContactUs.Name = "lblContactUs";
-            this.lblContactUs.Size = new System.Drawing.Size(135, 46);
-            this.lblContactUs.TabIndex = 21;
-            this.lblContactUs.Text = "Add new person\r\n to the system.";
+            this.lblBrief.AutoSize = true;
+            this.lblBrief.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblBrief.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBrief.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrief.ForeColor = System.Drawing.Color.White;
+            this.lblBrief.Location = new System.Drawing.Point(27, 351);
+            this.lblBrief.Name = "lblBrief";
+            this.lblBrief.Size = new System.Drawing.Size(135, 46);
+            this.lblBrief.TabIndex = 21;
+            this.lblBrief.Text = "Add new person\r\n to the system.";
             // 
             // label4
             // 
@@ -259,17 +259,17 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "New Person.";
             // 
-            // label1
+            // lblSidebarMode
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
-            this.label1.Location = new System.Drawing.Point(21, 248);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 45);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Add";
+            this.lblSidebarMode.AutoSize = true;
+            this.lblSidebarMode.BackColor = System.Drawing.Color.Transparent;
+            this.lblSidebarMode.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSidebarMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(156)))), ((int)(((byte)(84)))));
+            this.lblSidebarMode.Location = new System.Drawing.Point(21, 248);
+            this.lblSidebarMode.Name = "lblSidebarMode";
+            this.lblSidebarMode.Size = new System.Drawing.Size(83, 45);
+            this.lblSidebarMode.TabIndex = 3;
+            this.lblSidebarMode.Text = "Add";
             // 
             // txtLastName
             // 
@@ -378,10 +378,10 @@
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.guna2Panel1.Controls.Add(this.guna2Separator1);
-            this.guna2Panel1.Controls.Add(this.lblContactUs);
+            this.guna2Panel1.Controls.Add(this.lblBrief);
             this.guna2Panel1.Controls.Add(this.label4);
             this.guna2Panel1.Controls.Add(this.label2);
-            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.lblSidebarMode);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel1.Controls.Add(this.lblLogo);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -434,7 +434,7 @@
             this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCancel.ImageOffset = new System.Drawing.Point(9, 15);
             this.btnCancel.ImageSize = new System.Drawing.Size(21, 21);
-            this.btnCancel.Location = new System.Drawing.Point(686, 753);
+            this.btnCancel.Location = new System.Drawing.Point(361, 753);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(122, 46);
             this.btnCancel.TabIndex = 153;
@@ -521,31 +521,31 @@
             this.label19.TabIndex = 148;
             this.label19.Text = "National ID";
             // 
-            // btnAddNewPerson
+            // btnSave
             // 
-            this.btnAddNewPerson.BorderRadius = 15;
-            this.btnAddNewPerson.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewPerson.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewPerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewPerson.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewPerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewPerson.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
-            this.btnAddNewPerson.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.btnAddNewPerson.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewPerson.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewPerson.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnAddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNewPerson.Image")));
-            this.btnAddNewPerson.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAddNewPerson.ImageOffset = new System.Drawing.Point(9, 15);
-            this.btnAddNewPerson.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnAddNewPerson.Location = new System.Drawing.Point(829, 753);
-            this.btnAddNewPerson.Name = "btnAddNewPerson";
-            this.btnAddNewPerson.Size = new System.Drawing.Size(196, 46);
-            this.btnAddNewPerson.TabIndex = 140;
-            this.btnAddNewPerson.Text = "Add Person";
-            this.btnAddNewPerson.TextFormatNoPrefix = true;
-            this.btnAddNewPerson.TextOffset = new System.Drawing.Point(15, -14);
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
+            this.btnSave.BorderRadius = 15;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
+            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSave.ImageOffset = new System.Drawing.Point(9, 15);
+            this.btnSave.ImageSize = new System.Drawing.Size(26, 26);
+            this.btnSave.Location = new System.Drawing.Point(829, 753);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(196, 46);
+            this.btnSave.TabIndex = 140;
+            this.btnSave.Text = "Add Person";
+            this.btnSave.TextFormatNoPrefix = true;
+            this.btnSave.TextOffset = new System.Drawing.Point(15, -14);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // guna2PictureBox6
             // 
@@ -607,17 +607,17 @@
             this.guna2PictureBox2.TabIndex = 117;
             this.guna2PictureBox2.TabStop = false;
             // 
-            // label5
+            // lblSubMode
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(115)))), ((int)(((byte)(43)))));
-            this.label5.Location = new System.Drawing.Point(504, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(168, 40);
-            this.label5.TabIndex = 119;
-            this.label5.Text = "New Person";
+            this.lblSubMode.AutoSize = true;
+            this.lblSubMode.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubMode.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(115)))), ((int)(((byte)(43)))));
+            this.lblSubMode.Location = new System.Drawing.Point(546, 46);
+            this.lblSubMode.Name = "lblSubMode";
+            this.lblSubMode.Size = new System.Drawing.Size(102, 40);
+            this.lblSubMode.TabIndex = 119;
+            this.lblSubMode.Text = "Person";
             // 
             // label6
             // 
@@ -650,8 +650,9 @@
             this.dtDateOfBirth.BorderRadius = 5;
             this.dtDateOfBirth.BorderThickness = 1;
             this.dtDateOfBirth.Checked = true;
-            this.dtDateOfBirth.FillColor = System.Drawing.Color.Transparent;
+            this.dtDateOfBirth.FillColor = System.Drawing.Color.DarkGray;
             this.dtDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtDateOfBirth.ForeColor = System.Drawing.Color.Black;
             this.dtDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDateOfBirth.Location = new System.Drawing.Point(362, 365);
             this.dtDateOfBirth.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -696,10 +697,10 @@
             this.txtAddressID.Name = "txtAddressID";
             this.txtAddressID.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAddressID.PlaceholderText = "Enter address id";
+            this.txtAddressID.ReadOnly = true;
             this.txtAddressID.SelectedText = "";
             this.txtAddressID.Size = new System.Drawing.Size(663, 44);
             this.txtAddressID.TabIndex = 159;
-            this.txtAddressID.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddressID_Validating);
             // 
             // label15
             // 
@@ -725,28 +726,28 @@
             this.guna2PictureBox7.TabIndex = 158;
             this.guna2PictureBox7.TabStop = false;
             // 
-            // btnAddNewAddress
+            // btnOpenAddressForm
             // 
-            this.btnAddNewAddress.BorderRadius = 7;
-            this.btnAddNewAddress.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewAddress.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewAddress.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewAddress.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.btnAddNewAddress.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.btnAddNewAddress.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewAddress.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewAddress.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnAddNewAddress.ImageSize = new System.Drawing.Size(0, 0);
-            this.btnAddNewAddress.Location = new System.Drawing.Point(888, 474);
-            this.btnAddNewAddress.Name = "btnAddNewAddress";
-            this.btnAddNewAddress.Size = new System.Drawing.Size(131, 37);
-            this.btnAddNewAddress.TabIndex = 161;
-            this.btnAddNewAddress.Text = "+ New Address";
-            this.btnAddNewAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAddNewAddress.TextFormatNoPrefix = true;
-            this.btnAddNewAddress.Click += new System.EventHandler(this.btnAddNewAddress_Click);
+            this.btnOpenAddressForm.BorderRadius = 7;
+            this.btnOpenAddressForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenAddressForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenAddressForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenAddressForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenAddressForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOpenAddressForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnOpenAddressForm.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnOpenAddressForm.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenAddressForm.ForeColor = System.Drawing.Color.White;
+            this.btnOpenAddressForm.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnOpenAddressForm.ImageSize = new System.Drawing.Size(0, 0);
+            this.btnOpenAddressForm.Location = new System.Drawing.Point(863, 474);
+            this.btnOpenAddressForm.Name = "btnOpenAddressForm";
+            this.btnOpenAddressForm.Size = new System.Drawing.Size(156, 37);
+            this.btnOpenAddressForm.TabIndex = 161;
+            this.btnOpenAddressForm.Text = "+ New Address";
+            this.btnOpenAddressForm.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOpenAddressForm.TextFormatNoPrefix = true;
+            this.btnOpenAddressForm.Click += new System.EventHandler(this.btnOpenAddressForm_Click);
             // 
             // guna2PictureBox10
             // 
@@ -777,7 +778,7 @@
             this.gbSearchAddressOnMap.BorderColor = System.Drawing.Color.DarkGray;
             this.gbSearchAddressOnMap.BorderRadius = 7;
             this.gbSearchAddressOnMap.Controls.Add(this.pbPersonImage);
-            this.gbSearchAddressOnMap.Controls.Add(this.guna2GradientTileButton1);
+            this.gbSearchAddressOnMap.Controls.Add(this.btnBrowse);
             this.gbSearchAddressOnMap.Controls.Add(this.label17);
             this.gbSearchAddressOnMap.Controls.Add(this.label20);
             this.gbSearchAddressOnMap.Controls.Add(this.PictureBox);
@@ -791,32 +792,43 @@
             this.gbSearchAddressOnMap.Size = new System.Drawing.Size(663, 163);
             this.gbSearchAddressOnMap.TabIndex = 164;
             // 
-            // guna2GradientTileButton1
+            // pbPersonImage
             // 
-            this.guna2GradientTileButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
-            this.guna2GradientTileButton1.BorderRadius = 15;
-            this.guna2GradientTileButton1.BorderThickness = 2;
-            this.guna2GradientTileButton1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
-            this.guna2GradientTileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2GradientTileButton1.FillColor2 = System.Drawing.Color.Transparent;
-            this.guna2GradientTileButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2GradientTileButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
-            this.guna2GradientTileButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.guna2GradientTileButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2GradientTileButton1.ImageOffset = new System.Drawing.Point(9, 15);
-            this.guna2GradientTileButton1.ImageSize = new System.Drawing.Size(21, 21);
-            this.guna2GradientTileButton1.Location = new System.Drawing.Point(524, 66);
-            this.guna2GradientTileButton1.Name = "guna2GradientTileButton1";
-            this.guna2GradientTileButton1.Size = new System.Drawing.Size(122, 46);
-            this.guna2GradientTileButton1.TabIndex = 154;
-            this.guna2GradientTileButton1.Text = "Browse";
-            this.guna2GradientTileButton1.TextFormatNoPrefix = true;
-            this.guna2GradientTileButton1.Click += new System.EventHandler(this.guna2GradientTileButton1_Click);
+            this.pbPersonImage.FillColor = System.Drawing.Color.Transparent;
+            this.pbPersonImage.ImageRotate = 0F;
+            this.pbPersonImage.Location = new System.Drawing.Point(414, 48);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(64, 64);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 155;
+            this.pbPersonImage.TabStop = false;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
+            this.btnBrowse.BorderRadius = 15;
+            this.btnBrowse.BorderThickness = 2;
+            this.btnBrowse.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
+            this.btnBrowse.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBrowse.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBrowse.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBrowse.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBrowse.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBrowse.FillColor = System.Drawing.Color.Transparent;
+            this.btnBrowse.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(74)))), ((int)(((byte)(14)))));
+            this.btnBrowse.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnBrowse.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBrowse.ImageOffset = new System.Drawing.Point(9, 15);
+            this.btnBrowse.ImageSize = new System.Drawing.Size(21, 21);
+            this.btnBrowse.Location = new System.Drawing.Point(524, 66);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(122, 46);
+            this.btnBrowse.TabIndex = 154;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.TextFormatNoPrefix = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // label17
             // 
@@ -882,18 +894,7 @@
             this.label22.TabIndex = 166;
             this.label22.Text = "*";
             // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.FillColor = System.Drawing.Color.Transparent;
-            this.pbPersonImage.ImageRotate = 0F;
-            this.pbPersonImage.Location = new System.Drawing.Point(414, 48);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(64, 64);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 155;
-            this.pbPersonImage.TabStop = false;
-            // 
-            // frmAddNewPerson
+            // frmPersonEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -903,7 +904,7 @@
             this.Controls.Add(this.gbSearchAddressOnMap);
             this.Controls.Add(this.guna2PictureBox10);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.btnAddNewAddress);
+            this.Controls.Add(this.btnOpenAddressForm);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtAddressID);
             this.Controls.Add(this.label15);
@@ -917,7 +918,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.guna2Separator2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblMode);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.guna2Separator3);
@@ -931,19 +932,20 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txtNationalID);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.btnAddNewPerson);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.guna2PictureBox6);
             this.Controls.Add(this.guna2PictureBox5);
             this.Controls.Add(this.guna2PictureBox4);
             this.Controls.Add(this.guna2PictureBox3);
             this.Controls.Add(this.guna2PictureBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblSubMode);
             this.ForeColor = System.Drawing.Color.Gray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmAddNewPerson";
+            this.Name = "frmPersonEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddNewPerson";
+            this.Load += new System.EventHandler(this.frmPersonEditor_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
@@ -958,9 +960,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).EndInit();
             this.gbSearchAddressOnMap.ResumeLayout(false);
             this.gbSearchAddressOnMap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -974,12 +976,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblMode;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private System.Windows.Forms.Label lblContactUs;
+        private System.Windows.Forms.Label lblBrief;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSidebarMode;
         private Guna.UI2.WinForms.Guna2TextBox txtLastName;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
@@ -996,13 +998,13 @@
         private System.Windows.Forms.Label label21;
         private Guna.UI2.WinForms.Guna2TextBox txtNationalID;
         private System.Windows.Forms.Label label19;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewPerson;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnSave;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox6;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSubMode;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
@@ -1011,14 +1013,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtAddressID;
         private System.Windows.Forms.Label label15;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox7;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewAddress;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnOpenAddressForm;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox10;
         private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2GroupBox gbSearchAddressOnMap;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label20;
         private Guna.UI2.WinForms.Guna2PictureBox PictureBox;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnBrowse;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label22;

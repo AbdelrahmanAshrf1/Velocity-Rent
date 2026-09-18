@@ -4,7 +4,7 @@ namespace DTO.Person
 {
     public class CreatePersonRequest
     {
-        public AddPersonDto personDto {  get; set; }
+        public AddPersonDto PersonDto {  get; set; }
         public AddAddressDto AddressDto {  get; set; }
     }
 }

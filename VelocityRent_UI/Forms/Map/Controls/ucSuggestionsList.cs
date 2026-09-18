@@ -94,7 +94,6 @@ namespace Velocity_Rent.Map.Controls
 
         // for animation
         private int _targetHeight = 0;
-        private int _animationStep = 18;
         private const int _minListHeight = 60;
         private const int _maxListHeight = 520;
         private const int SB_VERT = 1;
@@ -117,31 +116,31 @@ namespace Velocity_Rent.Map.Controls
                 ForeColor = Color.FromArgb(120, 120, 120),
                 Padding = new Padding(8, 0, 0, 0),
                 BackColor = Color.Transparent,
-                Margin = new Padding(0, 6, 0, 6)
+                Margin = new Padding(0, 6, 0, 6),
+                Width = pnlFlow.ClientSize.Width
             };
         }
         private int CalculateHeight()
         {
-            int totalHeight = pnlFlow.Padding.Vertical;
-
-            foreach (Control c in pnlFlow.Controls)
-            {
-                if (!c.Visible) continue;
-                totalHeight += c.Height + c.Margin.Vertical;
-            }
+            int totalHeight = pnlFlow.PreferredSize.Height + Padding.Vertical;
             return Math.Min(_maxListHeight, Math.Max(_minListHeight, totalHeight));
         }
         private void AnimTimer_Tick(object sender, EventArgs e)
         {
-            if (Height < _targetHeight)
-                Height = Math.Min(Height + _animationStep, _targetHeight);
-            else if (Height > _targetHeight)
-                Height = Math.Max(Height - _animationStep, _targetHeight);
-            else
+            int diff = _targetHeight - Height;
+
+            if (Math.Abs(diff) < 3)
             {
+                Height = _targetHeight;
                 _animationTimer.Stop();
-                if (_targetHeight == 0)this.Visible = false;
+
+                if (_targetHeight == 0)
+                    Visible = false;
+
+                return;
             }
+
+            Height += diff / 4;
         }
         private void ShowAnimated(int targetHeight)
         {
@@ -149,15 +148,25 @@ namespace Velocity_Rent.Map.Controls
 
             this.BringToFront();
             this.Visible = true;
+            _animationTimer.Stop();
             _targetHeight = targetHeight;
             _animationTimer.Start();
         }
         private void HideAnimated()
         {
+            _animationTimer.Stop();
             _targetHeight = 0;
             _animationTimer.Start();
         }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
 
+            foreach (Control control in pnlFlow.Controls)
+            {
+                control.Width = pnlFlow.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            }
+        }
         #endregion
 
     }

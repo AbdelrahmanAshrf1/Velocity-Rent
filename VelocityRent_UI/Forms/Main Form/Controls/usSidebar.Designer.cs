@@ -35,7 +35,7 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.plIndicator = new System.Windows.Forms.Panel();
             this.pnlUserInfo = new System.Windows.Forms.Panel();
-            this.sataPictureBox1 = new SATAUiFramework.Controls.SATAPictureBox();
+            this.pbUserImage = new SATAUiFramework.Controls.SATAPictureBox();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnHome = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -44,15 +44,16 @@
             this.btnVehicles = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnBookings = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnMaintenance = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnSettings = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnPeople = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnViewLinkedinProfile = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pnlSidebar = new SATAUiFramework.SATAPanel();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnSettings = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnFindNearestCar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnContactMe = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.btnLogOut = new Guna.UI2.WinForms.Guna2GradientTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnlUserInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,7 @@
             // pnlUserInfo
             // 
             this.pnlUserInfo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlUserInfo.Controls.Add(this.sataPictureBox1);
+            this.pnlUserInfo.Controls.Add(this.pbUserImage);
             this.pnlUserInfo.Controls.Add(this.lblUserRole);
             this.pnlUserInfo.Controls.Add(this.lblUserName);
             this.pnlUserInfo.Location = new System.Drawing.Point(-1, 76);
@@ -91,22 +92,22 @@
             this.pnlUserInfo.Size = new System.Drawing.Size(190, 159);
             this.pnlUserInfo.TabIndex = 8;
             // 
-            // sataPictureBox1
+            // pbUserImage
             // 
-            this.sataPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.sataPictureBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.sataPictureBox1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.sataPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.sataPictureBox1.BorderSize = 2;
-            this.sataPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sataPictureBox1.GradientAngle = 90F;
-            this.sataPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("sataPictureBox1.Image")));
-            this.sataPictureBox1.Location = new System.Drawing.Point(55, 4);
-            this.sataPictureBox1.Name = "sataPictureBox1";
-            this.sataPictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.sataPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.sataPictureBox1.TabIndex = 11;
-            this.sataPictureBox1.TabStop = false;
+            this.pbUserImage.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbUserImage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.pbUserImage.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.pbUserImage.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbUserImage.BorderSize = 2;
+            this.pbUserImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbUserImage.GradientAngle = 90F;
+            this.pbUserImage.Image = ((System.Drawing.Image)(resources.GetObject("pbUserImage.Image")));
+            this.pbUserImage.Location = new System.Drawing.Point(55, 4);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(80, 80);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 11;
+            this.pbUserImage.TabStop = false;
             // 
             // lblUserRole
             // 
@@ -196,7 +197,6 @@
             this.btnCustomers.Size = new System.Drawing.Size(177, 41);
             this.btnCustomers.TabIndex = 12;
             this.btnCustomers.Text = "Customers";
-            this.btnCustomers.TextOffset = new System.Drawing.Point(10, 0);
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
             // 
             // btnVehicles
@@ -220,7 +220,6 @@
             this.btnVehicles.Size = new System.Drawing.Size(177, 41);
             this.btnVehicles.TabIndex = 13;
             this.btnVehicles.Text = "Vehicles";
-            this.btnVehicles.TextOffset = new System.Drawing.Point(7, 0);
             this.btnVehicles.Click += new System.EventHandler(this.btnVehicles_Click);
             // 
             // btnBookings
@@ -244,7 +243,6 @@
             this.btnBookings.Size = new System.Drawing.Size(177, 41);
             this.btnBookings.TabIndex = 14;
             this.btnBookings.Text = "Bookings";
-            this.btnBookings.TextOffset = new System.Drawing.Point(10, 0);
             this.btnBookings.Click += new System.EventHandler(this.btnBookings_Click);
             // 
             // btnMaintenance
@@ -268,32 +266,30 @@
             this.btnMaintenance.Size = new System.Drawing.Size(177, 41);
             this.btnMaintenance.TabIndex = 15;
             this.btnMaintenance.Text = "Maintenance";
-            this.btnMaintenance.TextOffset = new System.Drawing.Point(15, 0);
             this.btnMaintenance.Click += new System.EventHandler(this.btnMaintenance_Click);
             // 
-            // btnSettings
+            // btnPeople
             // 
-            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
-            this.btnSettings.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.btnSettings.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
-            this.btnSettings.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSettings.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSettings.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSettings.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSettings.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSettings.FillColor = System.Drawing.Color.Transparent;
-            this.btnSettings.FillColor2 = System.Drawing.Color.Transparent;
-            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSettings.ImageOffset = new System.Drawing.Point(7, 0);
-            this.btnSettings.Location = new System.Drawing.Point(12, 535);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(177, 41);
-            this.btnSettings.TabIndex = 16;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.TextOffset = new System.Drawing.Point(5, 0);
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnPeople.BackColor = System.Drawing.Color.Transparent;
+            this.btnPeople.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnPeople.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnPeople.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPeople.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPeople.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPeople.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPeople.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPeople.FillColor = System.Drawing.Color.Transparent;
+            this.btnPeople.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnPeople.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPeople.ForeColor = System.Drawing.Color.White;
+            this.btnPeople.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPeople.ImageOffset = new System.Drawing.Point(7, 0);
+            this.btnPeople.Location = new System.Drawing.Point(12, 535);
+            this.btnPeople.Name = "btnPeople";
+            this.btnPeople.Size = new System.Drawing.Size(177, 41);
+            this.btnPeople.TabIndex = 16;
+            this.btnPeople.Text = "People";
+            this.btnPeople.Click += new System.EventHandler(this.btnPeople_Click);
             // 
             // btnViewLinkedinProfile
             // 
@@ -314,7 +310,7 @@
             this.btnViewLinkedinProfile.TabIndex = 17;
             this.btnViewLinkedinProfile.Text = "View LinkedIn Profile";
             this.btnViewLinkedinProfile.TextOffset = new System.Drawing.Point(0, 5);
-            this.btnViewLinkedinProfile.Click += new System.EventHandler(this.btnFindNearestCar_Click);
+            this.btnViewLinkedinProfile.Click += new System.EventHandler(this.btnViewLinkedinProfile_Click);
             // 
             // pnlSidebar
             // 
@@ -327,9 +323,10 @@
             borderRadius1.TopRight = 1;
             this.pnlSidebar.BorderRadius = borderRadius1;
             this.pnlSidebar.BorderThickness = 0;
-            this.pnlSidebar.Controls.Add(this.btnLogOut);
-            this.pnlSidebar.Controls.Add(this.btnViewLinkedinProfile);
+            this.pnlSidebar.Controls.Add(this.btnLogout);
             this.pnlSidebar.Controls.Add(this.btnSettings);
+            this.pnlSidebar.Controls.Add(this.btnViewLinkedinProfile);
+            this.pnlSidebar.Controls.Add(this.btnPeople);
             this.pnlSidebar.Controls.Add(this.btnMaintenance);
             this.pnlSidebar.Controls.Add(this.btnBookings);
             this.pnlSidebar.Controls.Add(this.btnVehicles);
@@ -345,6 +342,52 @@
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(190, 820);
             this.pnlSidebar.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnLogout.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogout.FillColor = System.Drawing.Color.Transparent;
+            this.btnLogout.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.ImageOffset = new System.Drawing.Point(7, 0);
+            this.btnLogout.Location = new System.Drawing.Point(13, 734);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(177, 41);
+            this.btnLogout.TabIndex = 20;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettings.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
+            this.btnSettings.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(130)))), ((int)(((byte)(0)))));
+            this.btnSettings.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettings.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettings.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSettings.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSettings.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSettings.FillColor = System.Drawing.Color.Transparent;
+            this.btnSettings.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSettings.ImageOffset = new System.Drawing.Point(7, 0);
+            this.btnSettings.Location = new System.Drawing.Point(12, 582);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(177, 41);
+            this.btnSettings.TabIndex = 19;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnFindNearestCar
             // 
@@ -384,28 +427,7 @@
             this.btnContactMe.TabIndex = 17;
             this.btnContactMe.Text = "View LinkedIn Profile";
             this.btnContactMe.TextOffset = new System.Drawing.Point(0, 5);
-            this.btnContactMe.Click += new System.EventHandler(this.btnFindNearestCar_Click);
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(80)))));
-            this.btnLogOut.BorderRadius = 20;
-            this.btnLogOut.BorderThickness = 2;
-            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogOut.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
-            this.btnLogOut.FillColor2 = System.Drawing.Color.Transparent;
-            this.btnLogOut.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.ForeColor = System.Drawing.Color.White;
-            this.btnLogOut.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnLogOut.Location = new System.Drawing.Point(17, 730);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(160, 44);
-            this.btnLogOut.TabIndex = 18;
-            this.btnLogOut.Text = "Log out";
+            this.btnContactMe.Click += new System.EventHandler(this.btnViewLinkedinProfile_Click);
             // 
             // usSidebar
             // 
@@ -417,7 +439,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pnlUserInfo.ResumeLayout(false);
             this.pnlUserInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sataPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -436,12 +458,13 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnVehicles;
         private Guna.UI2.WinForms.Guna2GradientButton btnBookings;
         private Guna.UI2.WinForms.Guna2GradientButton btnMaintenance;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSettings;
+        private Guna.UI2.WinForms.Guna2GradientButton btnPeople;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnViewLinkedinProfile;
         private SATAUiFramework.SATAPanel pnlSidebar;
-        private SATAUiFramework.Controls.SATAPictureBox sataPictureBox1;
+        private SATAUiFramework.Controls.SATAPictureBox pbUserImage;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnFindNearestCar;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnContactMe;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnLogOut;
+        private Guna.UI2.WinForms.Guna2GradientButton btnSettings;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLogout;
     }
 }

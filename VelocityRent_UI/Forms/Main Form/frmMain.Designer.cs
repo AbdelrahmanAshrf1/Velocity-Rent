@@ -32,7 +32,6 @@
             this.panelContainer = new System.Windows.Forms.Panel();
             this.sataDragControl1 = new SATAUiFramework.Controls.SATADragControl();
             this.sataEllipseControl2 = new SATAUiFramework.Controls.SATAEllipseControl();
-            this.usSidebar1 = new Velocity_Rent.Main_Form.Controls.usSidebar();
             this.SuspendLayout();
             // 
             // panelContainer

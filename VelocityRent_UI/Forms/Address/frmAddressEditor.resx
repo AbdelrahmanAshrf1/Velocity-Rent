@@ -124,7 +124,7 @@
   <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        5AAAAOQBXaJ52AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADYSURBVFhH7ZZL
+        4wAAAOMBD+bfpwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADYSURBVFhH7ZZL
         DsIwDERzIjgNsOezgKMBV+QzU8lSFIKx06Rs/KRRm1YZT9REdQqCQGEN3aHtNGpjB9GDXm448QU9oAMf
         ODlCnEuPKx944crFgFcaWsmL87qBmthDYvSEztAvWuaolIYX6BvdiwuWEMOKC1qI4cWFWojFigvlDs/v
         PSdlFvmqF1t5Ti2Adjq68tdPUNtwtY05BG23a++6YCkwLITHuHuI0tDyfbuFKH/HJ8hKeVKampobJKvw
@@ -199,7 +199,7 @@
         MV7hBXrTsg2xD8BF8JVGRBuE3icyJe8xP75StMkbzc2x1fob5IAwquEuWx0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnCreateAddress.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANASURBVFhH1ZdL

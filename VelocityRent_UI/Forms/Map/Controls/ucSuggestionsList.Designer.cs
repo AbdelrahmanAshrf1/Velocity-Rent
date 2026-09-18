@@ -47,8 +47,7 @@
             // pnlFlow
             // 
             this.pnlFlow.AutoScroll = true;
-            this.pnlFlow.AutoSize = true;
-            this.pnlFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlFlow.AutoSize = false;
             this.pnlFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(22)))));
             this.pnlFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFlow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -71,7 +70,7 @@
             this.Size = new System.Drawing.Size(340, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.AutoSize = false;
         }
 
         #endregion

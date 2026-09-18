@@ -25,9 +25,17 @@ namespace VelocityRent_DLL.Mappers
             return new PersonDto
             {
                 ID = person.ID,
-                FullName = $"{person.FirstName} {person.LastName}",
+                FullName = person.FirstName + " " + person.LastName,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
                 Email = person.Email,
-                Phone = person.Phone
+                Phone = person.Phone,
+                AddressID = person.AddressID,
+                NationalID = person.NationalID,
+                DateOfBirth = person.DateOfBirth,
+                ProfileImage = person.ProfileImage,
+                Active = person.IsActive
+
             };
         }
 
